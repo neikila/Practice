@@ -30,8 +30,8 @@ body=world.CreateDynamicBody(position=(x0,y0))
 box=body.CreatePolygonFixture(box=(1,1), density=density, friction=friction)
 
 timeStep = 1.0 / 10.0
-velocityIterations = 10;
-positionIterations = 10;
+velocityIterations = 20;
+positionIterations = 20;
 
 
 # PYPY version
@@ -49,8 +49,10 @@ pypy_body = pypy_world.create_dynamic_body(
 print "py", "      pypy", "     differ", "  Theoretical"
 print ("%8.4f" % (body.position.y)),( "%8.4f" % (pypy_body.position.y))
 
+print dir(pypy_body)
+
 # This is our little game loop.
-for i in range(50):
+for i in range(80):
    # Instruct the world to perform a single step of simulation. It is
    # generally best to keep the time step and iterations fixed.
    world.Step(timeStep, velocityIterations, positionIterations)
@@ -67,3 +69,4 @@ for i in range(50):
    if theoretical_y < 1:
    	theoretical_y = 1;
    print ("%8.4f" % (y)), ("%8.4f" % (pypy_y)), ("%8.4f" % (differ)), ("%8.4f" % theoretical_y)
+   print body.linearVelocity, pypy_body.linear_velocity
