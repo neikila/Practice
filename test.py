@@ -20,41 +20,14 @@ gravity_Y = -10.0;
 gravity_X = 0;
 
 # py version
-worldAABB=b2AABB()
-worldAABB.lowerBound.Set(-100.0, -100.0);
-worldAABB.upperBound.Set(100.0, 100.0);
+world=b2World()
+groundBody=world.CreateStaticBody(
+    position=(0,-10),
+    shapes=b2PolygonShape(box=(50,10)),
+    )
 
-gravity = b2Vec2(0.0, -10.0);
-
-doSleep = True
-
-world = b2World(worldAABB, gravity, doSleep)
-
-groundBodyDef = b2BodyDef();
-groundBodyDef.position.Set(gravity_X, gravity_Y);
-
-groundBody = world.CreateBody(groundBodyDef);
-
-groundShapeDef = b2PolygonDef()
-
-groundShapeDef.SetAsBox(50.0, 10.0);
-
-groundBody.CreateShape(groundShapeDef);
-
-bodyDef = b2BodyDef()
-bodyDef.position.Set(x0, y0);
-body = world.CreateBody(bodyDef);
-
-shapeDef = b2PolygonDef()
-shapeDef.SetAsBox(1.0, 1.0);
-
-shapeDef.density = density;
-
-shapeDef.friction = friction;
-
-body.CreateShape(shapeDef);
-
-body.SetMassFromShapes();
+body=world.CreateDynamicBody(position=(x0,y0))
+box=body.CreatePolygonFixture(box=(1,1), density=density, friction=friction)
 
 timeStep = 1.0 / 10.0
 velocityIterations = 10;
@@ -74,9 +47,7 @@ pypy_body = pypy_world.create_dynamic_body(
     position=(x0, y0))
 
 print "py", "      pypy", "     differ", "  Theoretical"
-print ("%8.4f" % (body.GetPosition().y)),( "%8.4f" % (pypy_body.position.y))
-
-print dir(world)
+print ("%8.4f" % (body.position.y)),( "%8.4f" % (pypy_body.position.y))
 
 # This is our little game loop.
 for i in range(50):
@@ -88,7 +59,7 @@ for i in range(50):
    pypy_world.step(timeStep, velocityIterations, positionIterations)
    pypy_world.clear_forces()
 
-   y = body.GetPosition().y;
+   y = body.position.y;
    pypy_y = pypy_body.position.y;
    differ = pypy_y - y;
 
