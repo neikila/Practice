@@ -19,6 +19,12 @@ density = 1.0;
 gravity_Y = -10.0;
 gravity_X = 0;
 
+xMiddleBlock = 12;
+yMiddleBlock = 50;
+
+blockWidth = 5;
+blockHeight = 10;
+
 # py version
 world=b2World()
 groundBody=world.CreateStaticBody(
@@ -26,30 +32,38 @@ groundBody=world.CreateStaticBody(
     shapes=b2PolygonShape(box=(50,10)),
     )
 
+groundBodyInTheMiddle=world.CreateStaticBody(
+    position=(xMiddleBlock, yMiddleBlock),
+    shapes=b2PolygonShape(box=(blockWidth, blockHeight)),
+    )
+
 body=world.CreateDynamicBody(position=(x0,y0))
-box=body.CreatePolygonFixture(box=(1,1), density=density, friction=friction)
+box=body.CreatePolygonFixture(box=(8,8), density=density, friction=friction)
 
 timeStep = 1.0 / 10.0
-velocityIterations = 20;
-positionIterations = 20;
+velocityIterations = 10;
+positionIterations = 10;
 
 
 # PYPY version
 pypy_world = b2.World((gravity_X, gravity_Y), True)
 pypy_ground = pypy_world.create_static_body(position=(0, -10))
 pypy_ground.create_polygon_fixture(box=(50, 10))
+
+pypy_middle_block = pypy_world.create_static_body(position=(xMiddleBlock, yMiddleBlock))
+pypy_middle_block.create_polygon_fixture(box=(blockWidth, blockHeight))
+
 pypy_box=b2.Fixture(
-	shape=b2.Polygon(box=(1,1)),
+	shape=b2.Polygon(box=(8,8)),
     density=density,
     friction=friction)
 pypy_body = pypy_world.create_dynamic_body(
     fixtures=pypy_box,
     position=(x0, y0))
 
-print "py", "      pypy", "     differ", "  Theoretical"
-print ("%8.4f" % (body.position.y)),( "%8.4f" % (pypy_body.position.y))
+print "   py", "      pypy", "     differ", "  Theoretical"
 
-print dir(pypy_body)
+# print dir(pypy_body)
 
 # This is our little game loop.
 for i in range(80):
@@ -65,8 +79,14 @@ for i in range(80):
    pypy_y = pypy_body.position.y;
    differ = pypy_y - y;
 
-   theoretical_y = (y0 + gravity_Y * (timeStep * (i + 1)) * (timeStep * (i + 1)) / 2);
-   if theoretical_y < 1:
-   	theoretical_y = 1;
-   print ("%8.4f" % (y)), ("%8.4f" % (pypy_y)), ("%8.4f" % (differ)), ("%8.4f" % theoretical_y)
-   print body.linearVelocity, pypy_body.linear_velocity
+   x = body.position.x;
+   pypy_x = pypy_body.position.x;
+   differ_x = pypy_x - x;
+
+   print ""
+   print "Iteration numver:", i + 1, "time:", timeStep * (i + 1)
+   print "X: ", ("%8.4f" % (x)), ("%8.4f" % (pypy_x)), ("%8.4f" % (differ_x))
+   print "Y: ", ("%8.4f" % (y)), ("%8.4f" % (pypy_y)), ("%8.4f" % (differ))
+   print "Velocity: "
+   print "X: ", ("%8.4f" % (body.linearVelocity.x)), ("%8.4f" % (pypy_body.linear_velocity.x)) 
+   print "Y: ", ("%8.4f" % (body.linearVelocity.y)), ("%8.4f" % (pypy_body.linear_velocity.y)) 
