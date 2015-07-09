@@ -80,7 +80,7 @@ class StartSettings():
 
 # start_settings = StartSettings()
 if len(sys.argv) > 1:
-    visualised = sys.argv[1] == True
+    visualised = sys.argv[1] == "True"
 else:
     visualised = False
 if visualised:
