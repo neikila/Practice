@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <data>
     <model>
-        <epsilonLinVelocity>0.000001</epsilonLinVelocity>                            
+        <epsilon_lin_velocity>0.000001</epsilon_lin_velocity>                            
     </model>
     <ground>
         <vertices>
@@ -20,9 +20,9 @@
         </vertices>
     </ground>
     <body>
-        <linVelocityAmplitude>10</linVelocityAmplitude>                            
-        <linVelocityAngle>0</linVelocityAngle>
-        <angularVelocity>-45</angularVelocity>
+        <lin_velocity_amplitude>15</lin_velocity_amplitude>                            
+        <lin_velocity_angle>0</lin_velocity_angle>
+        <angular_velocity>-45</angular_velocity>
         <position>
             <point>
                 <x>0</x>
@@ -30,7 +30,7 @@
             </point>
         </position>
         <angle>0</angle>
-        <thowableBody>
+        <throwable_body>
             <point>
                 <x>0</x>
                 <y>5</y>
@@ -51,16 +51,16 @@
                 <x>0</x>
                 <y>0</y>
             </point>
-        </thowableBody>
+        </throwable_body>
     </body>
     <hole>
-        <holePosition>
+        <hole_position>
             <point>
                 <x>30</x>
                 <y>0</y>
             </point>
-        </holePosition>
-        <leftSideOfHole>
+        </hole_position>
+        <left_side_of_hole>
             <point>
                 <x>-5</x>
                 <y>5</y>
@@ -77,8 +77,8 @@
                 <x>-5</x>
                 <y>0</y>
             </point>
-        </leftSideOfHole>
-        <rightSideOfHole>
+        </left_side_of_hole>
+        <right_side_of_hole>
             <point>
                 <x>5</x>
                 <y>5</y>
@@ -95,6 +95,6 @@
                 <x>5</x>
                 <y>0</y>
             </point>
-        </rightSideOfHole>
+        </right_side_of_hole>
     </hole>
 </data>
