@@ -21,7 +21,18 @@ def getPointFromXML(elementName, rootElement):
 
 
 class GroundSettings():
-    masOfPoints = [(-40,0), (40,0)]
+
+    def __init__(self, rootElement):
+        self.masOfPoints = getMasOfPointsFromXML('vertices', rootElement)
+
+    def getLeft(self):
+        return left
+
+    def getRight(self):
+        return right
+
+    def getBottom(self):
+        return bottom
 
     def createMasOfShapes(self):
         mas = []
@@ -36,15 +47,21 @@ class StartSettings():
 
     def __init__(self):
         self.getFromXML()
-        self.groundSettings = GroundSettings()
 
     def getFromXML(self):
         tree = ET.parse('INPUT.dat')
         root = tree.getroot()
 
+        model = root.find('model')
+        self.epsilonLinVelocity = float(model.find('epsilonLinVelocity').text)
+
+        ground = root.find('ground')
+        self.groundSettings = GroundSettings(ground)
+
         body = root.find('body')
         self.linVelocityAmplitude = float(body.find('linVelocityAmplitude').text)
         self.linVelocityAngle = float(body.find('linVelocityAngle').text)
+        self.angularVelocity = float(body.find('angularVelocity').text) / 180 * b2_pi   # Convert from degree to radians
         self.angle = float(body.find('angle').text)
         self.position = getPointFromXML('position', body)
         self.thowableBody = getMasOfPointsFromXML('thowableBody', body)
@@ -103,6 +120,7 @@ class Throwable(Framework):
                     angle = sett.angle,
                     shapes = self.shapes,
                     shapeFixture = b2FixtureDef(density=1),
+                    angularVelocity = sett.angularVelocity,
                     linearVelocity = (
                             sett.linVelocityAmplitude *
                             math.cos(sett.linVelocityAngle),
@@ -116,6 +134,7 @@ class Throwable(Framework):
         self.resultTreeRoot = ET.Element("data")
         self.iterations = ET.SubElement(self.resultTreeRoot, "iterations")
         self.SaveIterationInXMLTree()
+        self.finalized = False
 
     # Reset Thowable object
     def Restart(self):
@@ -128,7 +147,7 @@ class Throwable(Framework):
                             math.sin(sett.linVelocityAngle)
                         )
         self.body.angle = sett.angle
-
+        self.body.angularVelocity = sett.angularVelocity
 
     def Keyboard(self, key):
         sett = self.startSettings
@@ -153,34 +172,40 @@ class Throwable(Framework):
                 sett.linVelocityAngle += 2 * b2_pi
 
     def Step(self, settings):
-
         super(Throwable, self).Step(settings)
         
         self.iterationNumber += 1
         self.SaveIterationInXMLTree()
+        self.isFinished()
 
-    def Finalize(self):
-        tree = ET.ElementTree(self.resultTreeRoot)
-        tree.write('OUTPUT.dat')
+    def finalize(self):
+        if self.finalized == False:
+            tree = ET.ElementTree(self.resultTreeRoot)
+            tree.write('OUTPUT.dat')
+            self.finalized = True
          
+    def isFinished(self):
+        if self.finalized == False:
+            pos = self.body.position
+            left = self.startSettings.groundSettings.getLeft()
+            right = self.startSettings.groundSettings.getRight()
+            bottom = self.startSettings.groundSettings.getBottom()
+         
+            if pos.x < left.x or pos.x > right.x or pos.y < bottom.y:
+                print "Object is out of field"
+                self.finalize()
+            
+            velocity = self.body.linearVelocity
+            if velocity.lengthSquared < self.startSettings.epsilonLinVelocity ** 2:
+                print "Too slow"
+                self.finalize()
 
-    def ShapeDestroyed(self, shape):
-        """
-        Callback indicating 'shape' has been destroyed.
-        """
-        pass
-
-    def JointDestroyed(self, joint):
-        """
-        The joint passed in was removed.
-        """
-        pass
-
-    # More functions can be changed to allow for contact monitoring and such.
-    # See the other testbed examples for more information.
+#        mass = b2MassData()
+#        self.body.GetMassData(mass)
+#        print mass.mass
 
 if __name__=="__main__":
 #    main(Throwable)
     world = Throwable()
     world.run()
-    world.Finalize()
+    world.finalize()
