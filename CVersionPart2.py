@@ -3,6 +3,7 @@
 #
 
 import math
+from operator import itemgetter
 import xml.etree.ElementTree as ET
 from framework import *
 
@@ -24,9 +25,9 @@ class GroundSettings():
 
     def __init__(self, rootElement):
         self.masOfPoints = getMasOfPointsFromXML('vertices', rootElement)
-        self.left = b2Vec2(min(self.masOfPoints, key=lambda el : el[0]))
-        self.right = b2Vec2(max(self.masOfPoints, key=lambda el : el[0]))
-        self.bottom = b2Vec2(min(self.masOfPoints, key=lambda el : el[1]))
+        self.left = b2Vec2(min(self.masOfPoints, key=itemgetter(0)))
+        self.right = b2Vec2(max(self.masOfPoints, key=itemgetter(0)))
+        self.bottom = b2Vec2(min(self.masOfPoints, key=itemgetter(0)))
 
     def getLeft(self):
         return self.left
@@ -181,12 +182,14 @@ class Throwable(Framework):
         self.SaveIterationInXMLTree()
         self.isFinished()
 
+    # Actions to do in the end
     def finalize(self):
         if self.finalized == False:
             tree = ET.ElementTree(self.resultTreeRoot)
             tree.write('OUTPUT.dat')
             self.finalized = True
          
+    # Should modelling be stopped
     def isFinished(self):
         if self.finalized == False:
             pos = self.body.position
