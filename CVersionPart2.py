@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 #
 
+import sys
 import math
 from operator import itemgetter
 import xml.etree.ElementTree as ET
-from framework import *
-
 
 def get_points_from_xml(element_name, root_element):
     points = []
@@ -25,9 +24,9 @@ class GroundSettings():
 
     def __init__(self, root_element):
         self.points = get_points_from_xml('vertices', root_element)
-        self.left = b2Vec2(min(self.points, key=itemgetter(0)))
-        self.right = b2Vec2(max(self.points, key=itemgetter(0)))
-        self.bottom = b2Vec2(min(self.points, key=itemgetter(1)))
+        self.left = min(self.points, key=itemgetter(0))
+        self.right = max(self.points, key=itemgetter(0))
+        self.bottom = min(self.points, key=itemgetter(1))
 
     def get_left(self):
         return self.left
@@ -40,10 +39,8 @@ class GroundSettings():
 
     def create_shapes(self):
         shapes = []
-        previous_point = self.points[0]
-        for point in self.points[1:]:
-            shapes.append(b2EdgeShape(vertices=[previous_point, point]))
-            previous_point = point
+        for p1, p2 in zip(self.points[:-1:1], self.points[1::1]):
+            shapes.append(b2EdgeShape(vertices=[p1, p2]))
         return shapes
 
 
@@ -57,6 +54,10 @@ class StartSettings():
         root = tree.getroot()
 
         model = root.find('model')
+#       self.visualized = model.find('visualized').text == "True"
+        self.velocity_iterations = int(model.find('velocity_iterations').text)
+        self.position_iterations = int(model.find('position_iterations').text)
+        self.hz = float(model.find('hz').text)
         self.epsilon_lin_velocity = float(model.find('epsilon_lin_velocity').text)
 
         ground = root.find('ground')
@@ -65,21 +66,56 @@ class StartSettings():
         body = root.find('body')
         self.lin_velocity_amplitude = float(body.find('lin_velocity_amplitude').text)
         self.lin_velocity_angle = float(body.find('lin_velocity_angle').text)
-        self.angular_velocity = float(body.find('angular_velocity').text) / 180 * b2_pi   # Convert from degree to radians
+        self.angular_velocity = float(body.find('angular_velocity').text)
         self.angle = float(body.find('angle').text)
         self.position = get_point_from_xml('position', body)
         self.throwable_body = get_points_from_xml('throwable_body', body)
 
         hole = root.find('hole')
+        self.hole_target = get_point_from_xml('hole_target', hole) 
         self.hole_position = get_point_from_xml('hole_position', hole) 
         self.left_side_of_hole = get_points_from_xml('left_side_of_hole', hole) 
         self.right_side_of_hole = get_points_from_xml('right_side_of_hole', hole) 
 
 
-class Throwable(Framework):
-    name = "Throwable" # Name of the class to display
-    description = """w/s - increase/dicrease spead\
-                a/d - increase/decrease angle"""
+# start_settings = StartSettings()
+if len(sys.argv) > 1:
+    visualised = sys.argv[1] == True
+else:
+    visualised = False
+if visualised:
+    from framework import *
+    class Decorator(Framework):
+        name = "Throwable" # Name of the class to display
+        description = "First example" 
+
+        def get_the_world_set(self):
+            super(Decorator, self).__init__()
+
+        def make_world_step(self, settings):
+            super(Throwable, self).Step(settings)
+
+else:
+    from Box2D import *
+    class Decorator(object):
+        
+        def get_the_world_set(self):
+            self.world = b2World(gravity=(0,-10), doSleep=True)
+
+        def make_world_step(self, settings):
+            timeStep = 1.0 / settings.hz
+            self.world.Step(
+                    timeStep, 
+                    settings.velocity_iterations, 
+                    settings.position_iterations
+                    )
+
+        def run(self):
+            while not self.finalized:
+                self.Step(self.start_settings)
+
+
+class Throwable(Decorator):
     iterationNumber = 0
 
     def save_iteration_in_xml_tree(self):
@@ -93,13 +129,16 @@ class Throwable(Framework):
         y.text = str(self.body.position.y)
         
         distance = ET.SubElement(iteration, "distance")
-        distance.text = str((self.body.position - self.start_settings.hole_position).lengthSquared)
+        vector_distance = self.body.position - self.start_settings.hole_position
+        distance.text = str(vector_distance.lengthSquared)
 
-    def __init__(self):
-        super(Throwable, self).__init__()
+    def __init__(self, start_settings):
 
         # Initialising settings
-        sett = self.start_settings = StartSettings()
+        # It should be the first execute
+        sett = self.start_settings = start_settings
+
+        self.get_the_world_set()
 
         # Ground
         self.world.CreateBody(
@@ -155,10 +194,12 @@ class Throwable(Framework):
 
     def Keyboard(self, key):
         sett = self.start_settings
+
         if key == Keys.K_r:
             self.Restart()
             print "Linear Velocity:", self.body.linearVelocity
             print "Angle:", sett.lin_velocity_angle / b2_pi * 180
+
         if key == Keys.K_w and sett.lin_velocity_amplitude < 60:
             sett.lin_velocity_amplitude += 1
 
@@ -176,8 +217,7 @@ class Throwable(Framework):
                 sett.lin_velocity_angle += 2 * b2_pi
 
     def Step(self, settings):
-        super(Throwable, self).Step(settings)
-        
+        self.make_world_step(settings)
         self.iterationNumber += 1
         self.save_iteration_in_xml_tree()
         self.is_finished()
@@ -197,7 +237,7 @@ class Throwable(Framework):
             right = self.start_settings.ground_settings.get_right()
             bottom = self.start_settings.ground_settings.get_bottom()
          
-            if pos.x < left.x or pos.x > right.x or pos.y < bottom.y:
+            if pos[0] < left[0] or pos[0] > right[0] or pos[0] < bottom[1]:
                 print "Object is out of field"
                 self.finalize()
             
@@ -206,12 +246,8 @@ class Throwable(Framework):
                 print "Too slow"
                 self.finalize()
 
-#        mass = b2MassData()
-#        self.body.GetMassData(mass)
-#        print mass.mass
-
 if __name__=="__main__":
-#    main(Throwable)
-    world = Throwable()
+    start_settings = StartSettings()
+    world = Throwable(start_settings)
     world.run()
     world.finalize()
