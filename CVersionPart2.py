@@ -24,21 +24,24 @@ class GroundSettings():
 
     def __init__(self, rootElement):
         self.masOfPoints = getMasOfPointsFromXML('vertices', rootElement)
+        self.left = b2Vec2(min(self.masOfPoints, key=lambda el : el[0]))
+        self.right = b2Vec2(max(self.masOfPoints, key=lambda el : el[0]))
+        self.bottom = b2Vec2(min(self.masOfPoints, key=lambda el : el[1]))
 
     def getLeft(self):
-        return left
+        return self.left
 
     def getRight(self):
-        return right
+        return self.right
 
     def getBottom(self):
-        return bottom
+        return self.bottom
 
     def createMasOfShapes(self):
         mas = []
         previousPoint = self.masOfPoints[0]
         for point in self.masOfPoints[1:]:
-            mas.append(b2EdgeShape(vertices = [previousPoint, point]))
+            mas.append(b2EdgeShape(vertices=[previousPoint, point]))
             previousPoint = point
         return mas
 
@@ -99,29 +102,29 @@ class Throwable(Framework):
 
         # Ground
         self.world.CreateBody(
-                    shapes = sett.groundSettings.createMasOfShapes()
+                    shapes=sett.groundSettings.createMasOfShapes()
                 )
 
         # Hole
         self.world.CreateStaticBody(
-                    position = sett.holePosition,
-                    shapes = [
-                            b2PolygonShape(vertices = sett.leftSideOfHole),
-                            b2PolygonShape(vertices = sett.rightSideOfHole),
+                    position=sett.holePosition,
+                    shapes=[
+                            b2PolygonShape(vertices=sett.leftSideOfHole),
+                            b2PolygonShape(vertices=sett.rightSideOfHole),
                         ]
                 )
 
         # Body
         self.shapes = (
-                b2PolygonShape(vertices = sett.thowableBody)
+                b2PolygonShape(vertices=sett.thowableBody)
                        )
         self.body=self.world.CreateDynamicBody(
-                    position = sett.position, 
-                    angle = sett.angle,
-                    shapes = self.shapes,
-                    shapeFixture = b2FixtureDef(density=1),
-                    angularVelocity = sett.angularVelocity,
-                    linearVelocity = (
+                    position=sett.position, 
+                    angle=sett.angle,
+                    shapes=self.shapes,
+                    shapeFixture=b2FixtureDef(density=1),
+                    angularVelocity=sett.angularVelocity,
+                    linearVelocity=(
                             sett.linVelocityAmplitude *
                             math.cos(sett.linVelocityAngle),
                             sett.linVelocityAmplitude *

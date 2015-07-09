@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <data>
     <model>
-        <epsilonLinVelocity>1</epsilonLinVelocity>                            
+        <epsilonLinVelocity>0.000001</epsilonLinVelocity>                            
     </model>
     <ground>
         <vertices>
@@ -12,6 +12,10 @@
             <point>
                 <x>40</x>
                 <y>0</y>
+            </point>
+            <point>
+                <x>100</x>
+                <y>-10</y>
             </point>
         </vertices>
     </ground>
