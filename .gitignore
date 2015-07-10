@@ -1,6 +1,6 @@
-.*swp
+*.swp
 SDL/
-.dat
+*.dat
 pygame-1.9.1release/
 pygame/
 pypybox2d-2.1-r331/
