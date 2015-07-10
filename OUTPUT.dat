@@ -1,1 +1,1074 @@
-<data><iterations><iteration num="0"><x>0.0</x><y>40.0</y><distance>2500.0</distance></iteration><iteration num="1"><x>0.249898195267</x><y>39.9974441528</y><distance>2484.86401367</distance></iteration><iteration num="2"><x>0.499596595764</x><y>39.9925613403</y><distance>2469.67871094</distance></iteration><iteration num="3"><x>0.749100923538</x><y>39.9853477478</y><distance>2454.44311523</distance></iteration><iteration num="4"><x>0.998417556286</x><y>39.9758110046</y><distance>2439.15722656</distance></iteration><iteration num="5"><x>1.24755215645</x><y>39.9639549255</y><distance>2423.82080078</distance></iteration><iteration num="6"><x>1.49651062489</x><y>39.9497795105</y><distance>2408.43359375</distance></iteration><iteration num="7"><x>1.74529910088</x><y>39.9332847595</y><distance>2392.99536133</distance></iteration><iteration num="8"><x>1.99392354488</x><y>39.9144744873</y><distance>2377.50561523</distance></iteration><iteration num="9"><x>2.24239015579</x><y>39.8933486938</y><distance>2361.96411133</distance></iteration><iteration num="10"><x>2.49070477486</x><y>39.8699150085</y><distance>2346.37133789</distance></iteration><iteration num="11"><x>2.73887372017</x><y>39.8441696167</y><distance>2330.72680664</distance></iteration><iteration num="12"><x>2.98690319061</x><y>39.8161201477</y><distance>2315.03076172</distance></iteration><iteration num="13"><x>3.23479938507</x><y>39.7857589722</y><distance>2299.28271484</distance></iteration><iteration num="14"><x>3.48256826401</x><y>39.7530975342</y><distance>2283.48291016</distance></iteration><iteration num="15"><x>3.73021626472</x><y>39.7181358337</y><distance>2267.63183594</distance></iteration><iteration num="16"><x>3.97774958611</x><y>39.6808700562</y><distance>2251.72900391</distance></iteration><iteration num="17"><x>4.22517442703</x><y>39.6413078308</y><distance>2235.77490234</distance></iteration><iteration num="18"><x>4.47249698639</x><y>39.5994491577</y><distance>2219.76977539</distance></iteration><iteration num="19"><x>4.71972322464</x><y>39.5552902222</y><distance>2203.71337891</distance></iteration><iteration num="20"><x>4.9668598175</x><y>39.5088348389</y><distance>2187.60595703</distance></iteration><iteration num="21"><x>5.2139134407</x><y>39.4600868225</y><distance>2171.44873047</distance></iteration><iteration num="22"><x>5.46088981628</x><y>39.4090499878</y><distance>2155.24121094</distance></iteration><iteration num="23"><x>5.70779514313</x><y>39.3557167053</y><distance>2138.98364258</distance></iteration><iteration num="24"><x>5.95463705063</x><y>39.3000907898</y><distance>2122.67675781</distance></iteration><iteration num="25"><x>6.201420784</x><y>39.2421760559</y><distance>2106.32080078</distance></iteration><iteration num="26"><x>6.44815254211</x><y>39.181968689</y><distance>2089.91625977</distance></iteration><iteration num="27"><x>6.69483995438</x><y>39.1194763184</y><distance>2073.46386719</distance></iteration><iteration num="28"><x>6.94148826599</x><y>39.0546951294</y><distance>2056.96411133</distance></iteration><iteration num="29"><x>7.18810415268</x><y>38.9876251221</y><distance>2040.41748047</distance></iteration><iteration num="30"><x>7.43469429016</x><y>38.9182662964</y><distance>2023.82446289</distance></iteration><iteration num="31"><x>7.68126487732</x><y>38.8466186523</y><distance>2007.18579102</distance></iteration><iteration num="32"><x>7.92782258987</x><y>38.7726821899</y><distance>1990.50195312</distance></iteration><iteration num="33"><x>8.17437362671</x><y>38.6964645386</y><distance>1973.77441406</distance></iteration><iteration num="34"><x>8.42092418671</x><y>38.6179580688</y><distance>1957.00317383</distance></iteration><iteration num="35"><x>8.66748142242</x><y>38.5371627808</y><distance>1940.18933105</distance></iteration><iteration num="36"><x>8.91405105591</x><y>38.454082489</y><distance>1923.33374023</distance></iteration><iteration num="37"><x>9.1606388092</x><y>38.3687095642</y><distance>1906.43676758</distance></iteration><iteration num="38"><x>9.40725326538</x><y>38.2810554504</y><distance>1889.50048828</distance></iteration><iteration num="39"><x>9.65389919281</x><y>38.1911087036</y><distance>1872.52453613</distance></iteration><iteration num="40"><x>9.90058326721</x><y>38.0988769531</y><distance>1855.51098633</distance></iteration><iteration num="41"><x>10.1473121643</x><y>38.0043525696</y><distance>1838.45996094</distance></iteration><iteration num="42"><x>10.3940925598</x><y>37.9075393677</y><distance>1821.37316895</distance></iteration><iteration num="43"><x>10.6409301758</x><y>37.8084335327</y><distance>1804.2512207</distance></iteration><iteration num="44"><x>10.8878316879</x><y>37.7070388794</y><distance>1787.09570312</distance></iteration><iteration num="45"><x>11.1348028183</x><y>37.603351593</y><distance>1769.90771484</distance></iteration><iteration num="46"><x>11.3818511963</x><y>37.4973754883</y><distance>1752.6887207</distance></iteration><iteration num="47"><x>11.6289825439</x><y>37.3890991211</y><distance>1735.43896484</distance></iteration><iteration num="48"><x>11.8762025833</x><y>37.2785263062</y><distance>1718.16052246</distance></iteration><iteration num="49"><x>12.1235179901</x><y>37.1656608582</y><distance>1700.85498047</distance></iteration><iteration num="50"><x>12.3709354401</x><y>37.0504989624</y><distance>1683.5234375</distance></iteration><iteration num="51"><x>12.6184616089</x><y>36.9330368042</y><distance>1666.16711426</distance></iteration><iteration num="52"><x>12.866101265</x><y>36.8132743835</y><distance>1648.78771973</distance></iteration><iteration num="53"><x>13.113861084</x><y>36.6912078857</y><distance>1631.38647461</distance></iteration><iteration num="54"><x>13.3617486954</x><y>36.5668373108</y><distance>1613.96496582</distance></iteration><iteration num="55"><x>13.6097688675</x><y>36.4401626587</y><distance>1596.52514648</distance></iteration><iteration num="56"><x>13.8579282761</x><y>36.3111801147</y><distance>1579.0682373</distance></iteration><iteration num="57"><x>14.1062335968</x><y>36.179889679</y><distance>1561.59619141</distance></iteration><iteration num="58"><x>14.3546895981</x><y>36.0462875366</y><distance>1544.1105957</distance></iteration><iteration num="59"><x>14.6033029556</x><y>35.910369873</y><distance>1526.61291504</distance></iteration><iteration num="60"><x>14.8520803452</x><y>35.7721405029</y><distance>1509.10546875</distance></iteration><iteration num="61"><x>15.1010274887</x><y>35.6315917969</y><distance>1491.58972168</distance></iteration><iteration num="62"><x>15.350151062</x><y>35.4887237549</y><distance>1474.06750488</distance></iteration><iteration num="63"><x>15.5994558334</x><y>35.343536377</y><distance>1456.54125977</distance></iteration><iteration num="64"><x>15.8489484787</x><y>35.1960220337</y><distance>1439.01220703</distance></iteration><iteration num="65"><x>16.0986347198</x><y>35.0461769104</y><distance>1421.48242188</distance></iteration><iteration num="66"><x>16.3485202789</x><y>34.8940086365</y><distance>1403.95471191</distance></iteration><iteration num="67"><x>16.5986099243</x><y>34.7395057678</y><distance>1386.43054199</distance></iteration><iteration num="68"><x>16.8489131927</x><y>34.5826683044</y><distance>1368.9119873</distance></iteration></iterations></data>
+<data>
+<iterations>
+<iteration num="0">
+<x>0.0</x>
+<y>40.0</y>
+<distance>2329.0</distance></iteration>
+<iteration num="1">
+<x>0.166564881802</x>
+<y>39.9974441528</y>
+<distance>2315.28466797</distance></iteration>
+<iteration num="2">
+<x>0.332929968834</x>
+<y>39.9925613403</y>
+<distance>2301.47314453</distance></iteration>
+<iteration num="3">
+<x>0.499100983143</x>
+<y>39.9853477478</y>
+<distance>2287.56445312</distance></iteration>
+<iteration num="4">
+<x>0.665084242821</x>
+<y>39.9758110046</y>
+<distance>2273.56030273</distance></iteration>
+<iteration num="5">
+<x>0.830885469913</x>
+<y>39.9639549255</y>
+<distance>2259.4609375</distance></iteration>
+<iteration num="6">
+<x>0.996510624886</x>
+<y>39.9497795105</y>
+<distance>2245.26757812</distance></iteration>
+<iteration num="7">
+<x>1.16196572781</x>
+<y>39.9332847595</y>
+<distance>2230.97998047</distance></iteration>
+<iteration num="8">
+<x>1.32725691795</x>
+<y>39.9144744873</y>
+<distance>2216.59912109</distance></iteration>
+<iteration num="9">
+<x>1.49239015579</x>
+<y>39.8933486938</y>
+<distance>2202.1262207</distance></iteration>
+<iteration num="10">
+<x>1.657371521</x>
+<y>39.8699150085</y>
+<distance>2187.56201172</distance></iteration>
+<iteration num="11">
+<x>1.82220709324</x>
+<y>39.8441696167</y>
+<distance>2172.90673828</distance></iteration>
+<iteration num="12">
+<x>1.98690319061</x>
+<y>39.8161201477</y>
+<distance>2158.16210938</distance></iteration>
+<iteration num="13">
+<x>2.15146589279</x>
+<y>39.7857589722</y>
+<distance>2143.328125</distance></iteration>
+<iteration num="14">
+<x>2.31590127945</x>
+<y>39.7530975342</y>
+<distance>2128.40649414</distance></iteration>
+<iteration num="15">
+<x>2.48021578789</x>
+<y>39.7181358337</y>
+<distance>2113.39794922</distance></iteration>
+<iteration num="16">
+<x>2.64441561699</x>
+<y>39.6808700562</y>
+<distance>2098.30322266</distance></iteration>
+<iteration num="17">
+<x>2.80850696564</x>
+<y>39.6413078308</y>
+<distance>2083.12353516</distance></iteration>
+<iteration num="18">
+<x>2.9724957943</x>
+<y>39.5994491577</y>
+<distance>2067.86035156</distance></iteration>
+<iteration num="19">
+<x>3.13638901711</x>
+<y>39.5552902222</y>
+<distance>2052.51367188</distance></iteration>
+<iteration num="20">
+<x>3.30019235611</x>
+<y>39.5088348389</y>
+<distance>2037.08569336</distance></iteration>
+<iteration num="21">
+<x>3.46391248703</x>
+<y>39.4600868225</y>
+<distance>2021.5769043</distance></iteration>
+<iteration num="22">
+<x>3.62755560875</x>
+<y>39.4090499878</y>
+<distance>2005.98937988</distance></iteration>
+<iteration num="23">
+<x>3.79112815857</x>
+<y>39.3557167053</y>
+<distance>1990.32324219</distance></iteration>
+<iteration num="24">
+<x>3.95463657379</x>
+<y>39.3000907898</y>
+<distance>1974.58007812</distance></iteration>
+<iteration num="25">
+<x>4.11808681488</x>
+<y>39.2421760559</y>
+<distance>1958.76135254</distance></iteration>
+<iteration num="26">
+<x>4.28148555756</x>
+<y>39.181968689</y>
+<distance>1942.86816406</distance></iteration>
+<iteration num="27">
+<x>4.44483995438</x>
+<y>39.1194763184</y>
+<distance>1926.90222168</distance></iteration>
+<iteration num="28">
+<x>4.60815525055</x>
+<y>39.0546951294</y>
+<distance>1910.86462402</distance></iteration>
+<iteration num="29">
+<x>4.7714381218</x>
+<y>38.9876251221</y>
+<distance>1894.75646973</distance></iteration>
+<iteration num="30">
+<x>4.93469524384</x>
+<y>38.9182662964</y>
+<distance>1878.57958984</distance></iteration>
+<iteration num="31">
+<x>5.09793281555</x>
+<y>38.8466186523</y>
+<distance>1862.33520508</distance></iteration>
+<iteration num="32">
+<x>5.26115751266</x>
+<y>38.7726821899</y>
+<distance>1846.02453613</distance></iteration>
+<iteration num="33">
+<x>5.42437553406</x>
+<y>38.6964645386</y>
+<distance>1829.64990234</distance></iteration>
+<iteration num="34">
+<x>5.58759307861</x>
+<y>38.6179580688</y>
+<distance>1813.2121582</distance></iteration>
+<iteration num="35">
+<x>5.75081682205</x>
+<y>38.5371627808</y>
+<distance>1796.71276855</distance></iteration>
+<iteration num="36">
+<x>5.91405344009</x>
+<y>38.454082489</y>
+<distance>1780.15368652</distance></iteration>
+<iteration num="37">
+<x>6.07730913162</x>
+<y>38.3687095642</y>
+<distance>1763.53601074</distance></iteration>
+<iteration num="38">
+<x>6.24059009552</x>
+<y>38.2810554504</y>
+<distance>1746.86206055</distance></iteration>
+<iteration num="39">
+<x>6.40390300751</x>
+<y>38.1911087036</y>
+<distance>1730.13256836</distance></iteration>
+<iteration num="40">
+<x>6.5672545433</x>
+<y>38.0988769531</y>
+<distance>1713.35021973</distance></iteration>
+<iteration num="41">
+<x>6.73065042496</x>
+<y>38.0043525696</y>
+<distance>1696.51611328</distance></iteration>
+<iteration num="42">
+<x>6.89409732819</x>
+<y>37.9075393677</y>
+<distance>1679.63171387</distance></iteration>
+<iteration num="43">
+<x>7.05760192871</x>
+<y>37.8084335327</y>
+<distance>1662.69897461</distance></iteration>
+<iteration num="44">
+<x>7.22117042542</x>
+<y>37.7070388794</y>
+<distance>1645.72009277</distance></iteration>
+<iteration num="45">
+<x>7.38480901718</x>
+<y>37.603351593</y>
+<distance>1628.69641113</distance></iteration>
+<iteration num="46">
+<x>7.54852390289</x>
+<y>37.4973754883</y>
+<distance>1611.63024902</distance></iteration>
+<iteration num="47">
+<x>7.71232223511</x>
+<y>37.3890991211</y>
+<distance>1594.52270508</distance></iteration>
+<iteration num="48">
+<x>7.87620925903</x>
+<y>37.2785263062</y>
+<distance>1577.37585449</distance></iteration>
+<iteration num="49">
+<x>8.04019165039</x>
+<y>37.1656608582</y>
+<distance>1560.19177246</distance></iteration>
+<iteration num="50">
+<x>8.2042760849</x>
+<y>37.0504989624</y>
+<distance>1542.97253418</distance></iteration>
+<iteration num="51">
+<x>8.36846923828</x>
+<y>36.9330368042</y>
+<distance>1525.71984863</distance></iteration>
+<iteration num="52">
+<x>8.53277587891</x>
+<y>36.8132743835</y>
+<distance>1508.43530273</distance></iteration>
+<iteration num="53">
+<x>8.6972026825</x>
+<y>36.6912078857</y>
+<distance>1491.12145996</distance></iteration>
+<iteration num="54">
+<x>8.86175727844</x>
+<y>36.5668373108</y>
+<distance>1473.7800293</distance></iteration>
+<iteration num="55">
+<x>9.02644443512</x>
+<y>36.4401626587</y>
+<distance>1456.41308594</distance></iteration>
+<iteration num="56">
+<x>9.19127082825</x>
+<y>36.3111801147</y>
+<distance>1439.02246094</distance></iteration>
+<iteration num="57">
+<x>9.35624313354</x>
+<y>36.179889679</y>
+<distance>1421.61083984</distance></iteration>
+<iteration num="58">
+<x>9.52136611938</x>
+<y>36.0462875366</y>
+<distance>1404.17944336</distance></iteration>
+<iteration num="59">
+<x>9.68664646149</x>
+<y>35.910369873</y>
+<distance>1386.7310791</distance></iteration>
+<iteration num="60">
+<x>9.85209083557</x>
+<y>35.7721405029</y>
+<distance>1369.26733398</distance></iteration>
+<iteration num="61">
+<x>10.01770401</x>
+<y>35.6315917969</y>
+<distance>1351.79089355</distance></iteration>
+<iteration num="62">
+<x>10.1834936142</x>
+<y>35.4887237549</y>
+<distance>1334.3034668</distance></iteration>
+<iteration num="63">
+<x>10.3494644165</x>
+<y>35.343536377</y>
+<distance>1316.80786133</distance></iteration>
+<iteration num="64">
+<x>10.5156230927</x>
+<y>35.1960220337</y>
+<distance>1299.30554199</distance></iteration>
+<iteration num="65">
+<x>10.6819753647</x>
+<y>35.0461769104</y>
+<distance>1281.79882812</distance></iteration>
+<iteration num="66">
+<x>10.8485269547</x>
+<y>34.8940086365</y>
+<distance>1264.29077148</distance></iteration>
+<iteration num="67">
+<x>11.0152835846</x>
+<y>34.7395057678</y>
+<distance>1246.78283691</distance></iteration>
+<iteration num="68">
+<x>11.1822509766</x>
+<y>34.5826683044</y>
+<distance>1229.2779541</distance></iteration>
+<iteration num="69">
+<x>11.3494358063</x>
+<y>34.4234924316</y>
+<distance>1211.77770996</distance></iteration>
+<iteration num="70">
+<x>11.5168428421</x>
+<y>34.2619743347</y>
+<distance>1194.28491211</distance></iteration>
+<iteration num="71">
+<x>11.6844787598</x>
+<y>34.0981178284</y>
+<distance>1176.80212402</distance></iteration>
+<iteration num="72">
+<x>11.852347374</x>
+<y>33.9319114685</y>
+<distance>1159.3314209</distance></iteration>
+<iteration num="73">
+<x>12.0204563141</x>
+<y>33.7633552551</y>
+<distance>1141.87512207</distance></iteration>
+<iteration num="74">
+<x>12.1888103485</x>
+<y>33.5924491882</y>
+<distance>1124.43615723</distance></iteration>
+<iteration num="75">
+<x>12.3574151993</x>
+<y>33.4191856384</y>
+<distance>1107.01660156</distance></iteration>
+<iteration num="76">
+<x>12.5262765884</x>
+<y>33.243560791</y>
+<distance>1089.61865234</distance></iteration>
+<iteration num="77">
+<x>12.6953983307</x>
+<y>33.065574646</y>
+<distance>1072.2454834</distance></iteration>
+<iteration num="78">
+<x>12.8647880554</x>
+<y>32.8852233887</y>
+<distance>1054.89916992</distance></iteration>
+<iteration num="79">
+<x>13.0344495773</x>
+<y>32.7025032043</y>
+<distance>1037.58251953</distance></iteration>
+<iteration num="80">
+<x>13.2043895721</x>
+<y>32.5174064636</y>
+<distance>1020.29785156</distance></iteration>
+<iteration num="81">
+<x>13.3746118546</x>
+<y>32.3299331665</y>
+<distance>1003.04785156</distance></iteration>
+<iteration num="82">
+<x>13.5451231003</x>
+<y>32.1400794983</y>
+<distance>985.835144043</distance></iteration>
+<iteration num="83">
+<x>13.715927124</x>
+<y>31.9478416443</y>
+<distance>968.662658691</distance></iteration>
+<iteration num="84">
+<x>13.8870296478</x>
+<y>31.7532176971</y>
+<distance>951.532714844</distance></iteration>
+<iteration num="85">
+<x>14.0584363937</x>
+<y>31.5562000275</y>
+<distance>934.448120117</distance></iteration>
+<iteration num="86">
+<x>14.2301502228</x>
+<y>31.3567848206</y>
+<distance>917.411499023</distance></iteration>
+<iteration num="87">
+<x>14.4021787643</x>
+<y>31.1549682617</y>
+<distance>900.425598145</distance></iteration>
+<iteration num="88">
+<x>14.5745258331</x>
+<y>30.950750351</y>
+<distance>883.493408203</distance></iteration>
+<iteration num="89">
+<x>14.7471961975</x>
+<y>30.7441215515</y>
+<distance>866.617492676</distance></iteration>
+<iteration num="90">
+<x>14.9201946259</x>
+<y>30.5350818634</y>
+<distance>849.80065918</distance></iteration>
+<iteration num="91">
+<x>15.0935258865</x>
+<y>30.3236255646</y>
+<distance>833.045959473</distance></iteration>
+<iteration num="92">
+<x>15.2671947479</x>
+<y>30.1097450256</y>
+<distance>816.355957031</distance></iteration>
+<iteration num="93">
+<x>15.4412059784</x>
+<y>29.8934364319</y>
+<distance>799.733520508</distance></iteration>
+<iteration num="94">
+<x>15.6155643463</x>
+<y>29.6747016907</y>
+<distance>783.181945801</distance></iteration>
+<iteration num="95">
+<x>15.7902736664</x>
+<y>29.4535293579</y>
+<distance>766.703857422</distance></iteration>
+<iteration num="96">
+<x>15.965338707</x>
+<y>29.2299156189</y>
+<distance>750.302062988</distance></iteration>
+<iteration num="97">
+<x>16.1407642365</x>
+<y>29.0038604736</y>
+<distance>733.980163574</distance></iteration>
+<iteration num="98">
+<x>16.3165531158</x>
+<y>28.7753562927</y>
+<distance>717.740722656</distance></iteration>
+<iteration num="99">
+<x>16.4927120209</x>
+<y>28.5443954468</y>
+<distance>701.586730957</distance></iteration>
+<iteration num="100">
+<x>16.6692428589</x>
+<y>28.3109760284</y>
+<distance>685.521240234</distance></iteration>
+<iteration num="101">
+<x>16.8461532593</x>
+<y>28.0750923157</y>
+<distance>669.547607422</distance></iteration>
+<iteration num="102">
+<x>17.0234413147</x>
+<y>27.8367404938</y>
+<distance>653.668884277</distance></iteration>
+<iteration num="103">
+<x>17.2011165619</x>
+<y>27.5959148407</y>
+<distance>637.888122559</distance></iteration>
+<iteration num="104">
+<x>17.3791809082</x>
+<y>27.3526096344</y>
+<distance>622.208496094</distance></iteration>
+<iteration num="105">
+<x>17.5576381683</x>
+<y>27.1068210602</y>
+<distance>606.633300781</distance></iteration>
+<iteration num="106">
+<x>17.736492157</x>
+<y>26.8585453033</y>
+<distance>591.16583252</distance></iteration>
+<iteration num="107">
+<x>17.9157466888</x>
+<y>26.6077728271</y>
+<distance>575.809204102</distance></iteration>
+<iteration num="108">
+<x>18.0954055786</x>
+<y>26.3544998169</y>
+<distance>560.566650391</distance></iteration>
+<iteration num="109">
+<x>18.275472641</x>
+<y>26.0987243652</y>
+<distance>545.441833496</distance></iteration>
+<iteration num="110">
+<x>18.4559497833</x>
+<y>25.8404369354</y>
+<distance>530.437866211</distance></iteration>
+<iteration num="111">
+<x>18.6368427277</x>
+<y>25.5796337128</y>
+<distance>515.558105469</distance></iteration>
+<iteration num="112">
+<x>18.8181533813</x>
+<y>25.3163108826</y>
+<distance>500.806091309</distance></iteration>
+<iteration num="113">
+<x>18.9998855591</x>
+<y>25.0504589081</y>
+<distance>486.185119629</distance></iteration>
+<iteration num="114">
+<x>19.1820449829</x>
+<y>24.782075882</y>
+<distance>471.698791504</distance></iteration>
+<iteration num="115">
+<x>19.3646297455</x>
+<y>24.5111560822</y>
+<distance>457.350738525</distance></iteration>
+<iteration num="116">
+<x>19.5476455688</x>
+<y>24.2376918793</y>
+<distance>443.144317627</distance></iteration>
+<iteration num="117">
+<x>19.7310962677</x>
+<y>23.9616794586</y>
+<distance>429.083221436</distance></iteration>
+<iteration num="118">
+<x>19.9149837494</x>
+<y>23.6831111908</y>
+<distance>415.170928955</distance></iteration>
+<iteration num="119">
+<x>20.0993118286</x>
+<y>23.4019813538</y>
+<distance>401.411102295</distance></iteration>
+<iteration num="120">
+<x>20.2840824127</x>
+<y>23.1182880402</y>
+<distance>387.807678223</distance></iteration>
+<iteration num="121">
+<x>20.4692993164</x>
+<y>22.8320198059</y>
+<distance>374.36416626</distance></iteration>
+<iteration num="122">
+<x>20.6549625397</x>
+<y>22.5431747437</y>
+<distance>361.084320068</distance></iteration>
+<iteration num="123">
+<x>20.8410778046</x>
+<y>22.251745224</y>
+<distance>347.971954346</distance></iteration>
+<iteration num="124">
+<x>21.0276451111</x>
+<y>21.9577255249</y>
+<distance>335.030914307</distance></iteration>
+<iteration num="125">
+<x>21.2146701813</x>
+<y>21.6611099243</y>
+<distance>322.265014648</distance></iteration>
+<iteration num="126">
+<x>21.4021511078</x>
+<y>21.3618946075</y>
+<distance>309.678344727</distance></iteration>
+<iteration num="127">
+<x>21.5900936127</x>
+<y>21.0600700378</y>
+<distance>297.274597168</distance></iteration>
+<iteration num="128">
+<x>21.7784976959</x>
+<y>20.7556324005</y>
+<distance>285.057922363</distance></iteration>
+<iteration num="129">
+<x>21.9673671722</x>
+<y>20.4485740662</y>
+<distance>273.032287598</distance></iteration>
+<iteration num="130">
+<x>22.1567020416</x>
+<y>20.1388912201</y>
+<distance>261.201782227</distance></iteration>
+<iteration num="131">
+<x>22.3465061188</x>
+<y>19.8265743256</y>
+<distance>249.570343018</distance></iteration>
+<iteration num="132">
+<x>22.536781311</x>
+<y>19.5116214752</y>
+<distance>238.142349243</distance></iteration>
+<iteration num="133">
+<x>22.7275276184</x>
+<y>19.1940231323</y>
+<distance>226.921875</distance></iteration>
+<iteration num="134">
+<x>22.9187488556</x>
+<y>18.8737735748</y>
+<distance>215.913040161</distance></iteration>
+<iteration num="135">
+<x>23.1104450226</x>
+<y>18.550868988</y>
+<distance>205.120300293</distance></iteration>
+<iteration num="136">
+<x>23.3026180267</x>
+<y>18.2252998352</y>
+<distance>194.547821045</distance></iteration>
+<iteration num="137">
+<x>23.4952697754</x>
+<y>17.8970623016</y>
+<distance>184.199981689</distance></iteration>
+<iteration num="138">
+<x>23.6884002686</x>
+<y>17.5661468506</y>
+<distance>174.081192017</distance></iteration>
+<iteration num="139">
+<x>23.8820133209</x>
+<y>17.2325515747</y>
+<distance>164.195877075</distance></iteration>
+<iteration num="140">
+<x>24.0761089325</x>
+<y>16.8962688446</y>
+<distance>154.548568726</distance></iteration>
+<iteration num="141">
+<x>24.2706871033</x>
+<y>16.5572891235</y>
+<distance>145.143707275</distance></iteration>
+<iteration num="142">
+<x>24.4657516479</x>
+<y>16.2156105042</y>
+<distance>135.985946655</distance></iteration>
+<iteration num="143">
+<x>24.6612987518</x>
+<y>15.8712253571</y>
+<distance>127.079902649</distance></iteration>
+<iteration num="144">
+<x>24.857334137</x>
+<y>15.5241260529</y>
+<distance>118.43019104</distance></iteration>
+<iteration num="145">
+<x>25.0538578033</x>
+<y>15.1743059158</y>
+<distance>110.041549683</distance></iteration>
+<iteration num="146">
+<x>25.2508678436</x>
+<y>14.8217601776</y>
+<distance>101.918762207</distance></iteration>
+<iteration num="147">
+<x>25.4483661652</x>
+<y>14.4664821625</y>
+<distance>94.0666275024</distance></iteration>
+<iteration num="148">
+<x>25.6463546753</x>
+<y>14.1084651947</y>
+<distance>86.4900283813</distance></iteration>
+<iteration num="149">
+<x>25.844833374</x>
+<y>13.7477016449</y>
+<distance>79.1938171387</distance></iteration>
+<iteration num="150">
+<x>26.043800354</x>
+<y>13.3841876984</y>
+<distance>72.183013916</distance></iteration>
+<iteration num="151">
+<x>26.2432594299</x>
+<y>13.017914772</y>
+<distance>65.44972229</distance></iteration>
+<iteration num="152">
+<x>26.4432067871</x>
+<y>12.6488761902</y>
+<distance>58.9930114746</distance></iteration>
+<iteration num="153">
+<x>26.6436462402</x>
+<y>12.2770671844</y>
+<distance>52.8240356445</distance></iteration>
+<iteration num="154">
+<x>26.844575882</x>
+<y>11.9024810791</y>
+<distance>46.953453064</distance></iteration>
+<iteration num="155">
+<x>27.0459957123</x>
+<y>11.5251102448</y>
+<distance>41.3913841248</distance></iteration>
+<iteration num="156">
+<x>27.2479076385</x>
+<y>11.1449489594</y>
+<distance>36.1474266052</distance></iteration>
+<iteration num="157">
+<x>27.4503078461</x>
+<y>10.7619905472</y>
+<distance>31.2305736542</distance></iteration>
+<iteration num="158">
+<x>27.6531982422</x>
+<y>10.3762292862</y>
+<distance>26.6492233276</distance></iteration>
+<iteration num="159">
+<x>27.8565807343</x>
+<y>9.98765850067</y>
+<distance>22.4111442566</distance></iteration>
+<iteration num="160">
+<x>28.0604496002</x>
+<y>9.59627246857</y>
+<distance>18.5235099792</distance></iteration>
+<iteration num="161">
+<x>28.2648086548</x>
+<y>9.20206260681</y>
+<distance>14.9927740097</distance></iteration>
+<iteration num="162">
+<x>28.4696540833</x>
+<y>8.80502510071</y>
+<distance>11.8247938156</distance></iteration>
+<iteration num="163">
+<x>28.674987793</x>
+<y>8.40515136719</y>
+<distance>9.02466773987</distance></iteration>
+<iteration num="164">
+<x>28.8808097839</x>
+<y>8.0024356842</y>
+<distance>6.59682178497</distance></iteration>
+<iteration num="165">
+<x>29.0871143341</x>
+<y>7.59687328339</y>
+<distance>4.54496669769</distance></iteration>
+<iteration num="166">
+<x>29.2939033508</x>
+<y>7.1884560585</y>
+<distance>2.87206625938</distance></iteration>
+<iteration num="167">
+<x>29.3949546814</x>
+<y>6.97241830826</y>
+<distance>2.14791083336</distance></iteration>
+<iteration num="168">
+<x>29.3848323822</x>
+<y>6.9581785202</y>
+<distance>2.10944461823</distance></iteration>
+<iteration num="169">
+<x>29.3738327026</x>
+<y>6.94281625748</y>
+<distance>2.06851124763</distance></iteration>
+<iteration num="170">
+<x>29.3619613647</x>
+<y>6.92631387711</y>
+<distance>2.02516436577</distance></iteration>
+<iteration num="171">
+<x>29.3492202759</x>
+<y>6.90865278244</y>
+<distance>1.97946429253</distance></iteration>
+<iteration num="172">
+<x>29.3356189728</x>
+<y>6.88981246948</y>
+<distance>1.93147611618</distance></iteration>
+<iteration num="173">
+<x>29.3211631775</x>
+<y>6.86977577209</y>
+<distance>1.88128113747</distance></iteration>
+<iteration num="174">
+<x>29.3058662415</x>
+<y>6.84851884842</y>
+<distance>1.82895064354</distance></iteration>
+<iteration num="175">
+<x>29.2897338867</x>
+<y>6.82601690292</y>
+<distance>1.77456700802</distance></iteration>
+<iteration num="176">
+<x>29.2727813721</x>
+<y>6.80224370956</y>
+<distance>1.71821761131</distance></iteration>
+<iteration num="177">
+<x>29.2550201416</x>
+<y>6.77717208862</y>
+<distance>1.65999662876</distance></iteration>
+<iteration num="178">
+<x>29.2364654541</x>
+<y>6.7507724762</y>
+<distance>1.60000622272</distance></iteration>
+<iteration num="179">
+<x>29.2171287537</x>
+<y>6.72301626205</y>
+<distance>1.53836500645</distance></iteration>
+<iteration num="180">
+<x>29.1970310211</x>
+<y>6.69387149811</y>
+<distance>1.47518789768</distance></iteration>
+<iteration num="181">
+<x>29.1761875153</x>
+<y>6.6633067131</y>
+<distance>1.41061258316</distance></iteration>
+<iteration num="182">
+<x>29.1546211243</x>
+<y>6.63128662109</y>
+<distance>1.34477591515</distance></iteration>
+<iteration num="183">
+<x>29.1323490143</x>
+<y>6.59777736664</y>
+<distance>1.27783632278</distance></iteration>
+<iteration num="184">
+<x>29.1093940735</x>
+<y>6.56274318695</y>
+<distance>1.2099584341</distance></iteration>
+<iteration num="185">
+<x>29.0857810974</x>
+<y>6.52614593506</y>
+<distance>1.14131855965</distance></iteration>
+<iteration num="186">
+<x>29.0615367889</x>
+<y>6.48794794083</y>
+<distance>1.07211112976</distance></iteration>
+<iteration num="187">
+<x>29.036687851</x>
+<y>6.44811058044</y>
+<distance>1.00254189968</distance></iteration>
+<iteration num="188">
+<x>29.0112667084</x>
+<y>6.40659332275</y>
+<distance>0.932833015919</distance></iteration>
+<iteration num="189">
+<x>28.9853057861</x>
+<y>6.36335468292</y>
+<distance>0.863215625286</distance></iteration>
+<iteration num="190">
+<x>28.9588336945</x>
+<y>6.31835365295</y>
+<distance>0.79394942522</distance></iteration>
+<iteration num="191">
+<x>28.931892395</x>
+<y>6.27154779434</y>
+<distance>0.725302219391</distance></iteration>
+<iteration num="192">
+<x>28.9045181274</x>
+<y>6.22289466858</y>
+<distance>0.657560110092</distance></iteration>
+<iteration num="193">
+<x>28.876750946</x>
+<y>6.172352314</y>
+<distance>0.591032326221</distance></iteration>
+<iteration num="194">
+<x>28.8486366272</x>
+<y>6.11987733841</y>
+<distance>0.526040673256</distance></iteration>
+<iteration num="195">
+<x>28.8202171326</x>
+<y>6.06542778015</y>
+<distance>0.462931722403</distance></iteration>
+<iteration num="196">
+<x>28.7915420532</x>
+<y>6.00896072388</y>
+<distance>0.402064412832</distance></iteration>
+<iteration num="197">
+<x>28.7626609802</x>
+<y>5.95043468475</y>
+<distance>0.343820929527</distance></iteration>
+<iteration num="198">
+<x>28.7336235046</x>
+<y>5.88980913162</y>
+<distance>0.288602292538</distance></iteration>
+<iteration num="199">
+<x>28.7044868469</x>
+<y>5.827044487</y>
+<distance>0.236823260784</distance></iteration>
+<iteration num="200">
+<x>28.6885070801</x>
+<y>5.81721258163</y>
+<distance>0.231946021318</distance></iteration>
+<iteration num="201">
+<x>28.6732978821</x>
+<y>5.80756855011</y>
+<distance>0.227156743407</distance></iteration>
+<iteration num="202">
+<x>28.658864975</x>
+<y>5.79812908173</y>
+<distance>0.222455754876</distance></iteration>
+<iteration num="203">
+<x>28.6452140808</x>
+<y>5.78890275955</y>
+<distance>0.21783529222</distance></iteration>
+<iteration num="204">
+<x>28.6323432922</x>
+<y>5.77989435196</y>
+<distance>0.213290691376</distance></iteration>
+<iteration num="205">
+<x>28.620256424</x>
+<y>5.77110290527</y>
+<distance>0.208807200193</distance></iteration>
+<iteration num="206">
+<x>28.6089553833</x>
+<y>5.7625246048</y>
+<distance>0.204370126128</distance></iteration>
+<iteration num="207">
+<x>28.5984401703</x>
+<y>5.75415277481</y>
+<distance>0.199965327978</distance></iteration>
+<iteration num="208">
+<x>28.5887088776</x>
+<y>5.74597787857</y>
+<distance>0.195575490594</distance></iteration>
+<iteration num="209">
+<x>28.5797634125</x>
+<y>5.73798894882</y>
+<distance>0.191186353564</distance></iteration>
+<iteration num="210">
+<x>28.5715999603</x>
+<y>5.73017406464</y>
+<distance>0.186781063676</distance></iteration>
+<iteration num="211">
+<x>28.5642204285</x>
+<y>5.72252225876</y>
+<distance>0.182346373796</distance></iteration>
+<iteration num="212">
+<x>28.5576286316</x>
+<y>5.71502113342</y>
+<distance>0.177865773439</distance></iteration>
+<iteration num="213">
+<x>28.5518188477</x>
+<y>5.70765686035</y>
+<distance>0.173328399658</distance></iteration>
+<iteration num="214">
+<x>28.546792984</x>
+<y>5.70041418076</y>
+<distance>0.168720528483</distance></iteration>
+<iteration num="215">
+<x>28.5425491333</x>
+<y>5.69327831268</y>
+<distance>0.164031296968</distance></iteration>
+<iteration num="216">
+<x>28.5390834808</x>
+<y>5.68623495102</y>
+<distance>0.159253180027</distance></iteration>
+<iteration num="217">
+<x>28.5364017487</x>
+<y>5.67927074432</y>
+<distance>0.154376849532</distance></iteration>
+<iteration num="218">
+<x>28.5344982147</x>
+<y>5.67237329483</y>
+<distance>0.149399206042</distance></iteration>
+<iteration num="219">
+<x>28.5333766937</x>
+<y>5.66552829742</y>
+<distance>0.144313827157</distance></iteration>
+<iteration num="220">
+<x>28.5330314636</x>
+<y>5.65872430801</y>
+<distance>0.139121383429</distance></iteration>
+<iteration num="221">
+<x>28.5334663391</x>
+<y>5.65194988251</y>
+<distance>0.133821427822</distance></iteration>
+<iteration num="222">
+<x>28.5346813202</x>
+<y>5.64519357681</y>
+<distance>0.128414809704</distance></iteration>
+<iteration num="223">
+<x>28.5366744995</x>
+<y>5.63844585419</y>
+<distance>0.122908189893</distance></iteration>
+<iteration num="224">
+<x>28.5394477844</x>
+<y>5.63169574738</y>
+<distance>0.117305889726</distance></iteration>
+<iteration num="225">
+<x>28.5429992676</x>
+<y>5.62493467331</y>
+<distance>0.11161660403</distance></iteration>
+<iteration num="226">
+<x>28.547328949</x>
+<y>5.61815547943</y>
+<distance>0.105851501226</distance></iteration>
+<iteration num="227">
+<x>28.552438736</x>
+<y>5.61134958267</y>
+<distance>0.100021794438</distance></iteration>
+<iteration num="228">
+<x>28.5583267212</x>
+<y>5.60451078415</y>
+<distance>0.094142742455</distance></iteration>
+<iteration num="229">
+<x>28.564994812</x>
+<y>5.59763288498</y>
+<distance>0.0882297754288</distance></iteration>
+<iteration num="230">
+<x>28.5724430084</x>
+<y>5.59071063995</y>
+<distance>0.0823006331921</distance></iteration>
+<iteration num="231">
+<x>28.5806674957</x>
+<y>5.58373975754</y>
+<distance>0.0763766691089</distance></iteration>
+<iteration num="232">
+<x>28.589673996</x>
+<y>5.5767159462</y>
+<distance>0.0704771950841</distance></iteration>
+<iteration num="233">
+<x>28.5994606018</x>
+<y>5.56963682175</y>
+<distance>0.0646263659</distance></iteration>
+<iteration num="234">
+<x>28.6100254059</x>
+<y>5.5625</y>
+<distance>0.0588496141136</distance></iteration>
+<iteration num="235">
+<x>28.6213722229</x>
+<y>5.55530357361</y>
+<distance>0.0531718172133</distance></iteration>
+<iteration num="236">
+<x>28.6334972382</x>
+<y>5.54804754257</y>
+<distance>0.047620549798</distance></iteration>
+<iteration num="237">
+<x>28.6464042664</x>
+<y>5.54073190689</y>
+<distance>0.0422245636582</distance></iteration>
+<iteration num="238">
+<x>28.6600875854</x>
+<y>5.5333571434</y>
+<distance>0.0370137616992</distance></iteration>
+<iteration num="239">
+<x>28.6745510101</x>
+<y>5.52592515945</y>
+<distance>0.0320181399584</distance></iteration>
+<iteration num="240">
+<x>28.6897964478</x>
+<y>5.51843833923</y>
+<distance>0.0272677987814</distance></iteration>
+<iteration num="241">
+<x>28.7058200836</x>
+<y>5.51090049744</y>
+<distance>0.0227952487767</distance></iteration>
+<iteration num="242">
+<x>28.7226238251</x>
+<y>5.50331449509</y>
+<distance>0.0186314471066</distance></iteration>
+<iteration num="243">
+<x>28.7402076721</x>
+<y>5.49568605423</y>
+<distance>0.0148079674691</distance></iteration>
+<iteration num="244">
+<x>28.7585697174</x>
+<y>5.48801994324</y>
+<distance>0.0113560510799</distance></iteration>
+<iteration num="245">
+<x>28.7777137756</x>
+<y>5.48032283783</y>
+<distance>0.00830627791584</distance></iteration>
+<iteration num="246">
+<x>28.7821731567</x>
+<y>5.48293972015</y>
+<distance>0.00828545540571</distance></iteration>
+<iteration num="247">
+<x>28.7851982117</x>
+<y>5.48405742645</y>
+<distance>0.00814434234053</distance></iteration>
+<iteration num="248">
+<x>28.7867794037</x>
+<y>5.48368358612</y>
+<distance>0.00788755621761</distance></iteration>
+<iteration num="249">
+<x>28.786907196</x>
+<y>5.48182582855</y>
+<distance>0.00752225192264</distance></iteration>
+<iteration num="250">
+<x>28.7858066559</x>
+<y>5.47828578949</y>
+<distance>0.00699943024665</distance></iteration>
+<iteration num="251">
+<x>28.7841300964</x>
+<y>5.47247838974</y>
+<distance>0.00617941189557</distance></iteration>
+<iteration num="252">
+<x>28.7818813324</x>
+<y>5.46440505981</y>
+<distance>0.00512312306091</distance></iteration>
+<iteration num="253">
+<x>28.7816257477</x>
+<y>5.46015834808</y>
+<distance>0.00450101261958</distance></iteration>
+<iteration num="254">
+<x>28.7821521759</x>
+<y>5.45583820343</y>
+<distance>0.00387278501876</distance></iteration>
+<iteration num="255">
+<x>28.7829914093</x>
+<y>5.45155668259</y>
+<distance>0.00328301009722</distance></iteration>
+<iteration num="256">
+<x>28.7838096619</x>
+<y>5.44739151001</y>
+<distance>0.00275565753691</distance></iteration>
+<iteration num="257">
+<x>28.7846069336</x>
+<y>5.44333314896</y>
+<distance>0.00228626327589</distance></iteration>
+<iteration num="258">
+<x>28.7853851318</x>
+<y>5.43937206268</y>
+<distance>0.00187037186697</distance></iteration>
+<iteration num="259">
+<x>28.7861480713</x>
+<y>5.43549871445</y>
+<distance>0.00150390318595</distance></iteration>
+<iteration num="260">
+<x>28.786895752</x>
+<y>5.43170404434</y>
+<distance>0.00119055260438</distance></iteration>
+<iteration num="261">
+<x>28.7876300812</x>
+<y>5.4279794693</y>
+<distance>0.000931335380301</distance></iteration>
+<iteration num="262">
+<x>28.788351059</x>
+<y>5.42431545258</y>
+<distance>0.00072300323518</distance></iteration>
+<iteration num="263">
+<x>28.7890644073</x>
+<y>5.42070436478</y>
+<distance>0.000562693050597</distance></iteration>
+<iteration num="264">
+<x>28.7897701263</x>
+<y>5.41713666916</y>
+<distance>0.00044817358139</distance></iteration>
+<iteration num="265">
+<x>28.7897701263</x>
+<y>5.41713666916</y>
+<distance>0.00044817358139</distance></iteration>
+<iteration num="266">
+<x>28.7897701263</x>
+<y>5.41713619232</y>
+<distance>0.000448153412435</distance></iteration>
+<iteration num="267">
+<x>28.7897701263</x>
+<y>5.41713619232</y>
+<distance>0.000448153412435</distance></iteration></iterations></data>

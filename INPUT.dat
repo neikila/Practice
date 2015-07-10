@@ -24,7 +24,7 @@
         </vertices>
     </ground>
     <body>
-        <lin_velocity_amplitude>15</lin_velocity_amplitude>                            
+        <lin_velocity_amplitude>10</lin_velocity_amplitude>                            
         <lin_velocity_angle>0</lin_velocity_angle>
         <angular_velocity>-0.785398163398</angular_velocity>
         <position>
