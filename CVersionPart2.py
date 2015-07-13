@@ -70,6 +70,8 @@ class Throwable(Decorator):
     sett = self.start_settings = start_settings
 
     self.get_the_world_set()
+    self.world.gravity=b2Vec2(0, -1 * sett.g)
+
 
     # Ground
     self.world.CreateBody(

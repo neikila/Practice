@@ -4,5 +4,6 @@ SDL/
 OUTPUT.dat
 pygame-1.9.1release/
 pygame/
+out/
 pypybox2d-2.1-r331/
 pypybox2d/

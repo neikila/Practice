@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <data>
     <model>
- <!--       <visualized>True</visualized> -->
-        <epsilon_lin_velocity>0.000001</epsilon_lin_velocity>                            
-        <velocity_iterations>8</velocity_iterations>                            
-        <position_iterations>3</position_iterations>                            
+        <epsilon_lin_velocity>0.000001</epsilon_lin_velocity>
+        <velocity_iterations>8</velocity_iterations>
+        <position_iterations>3</position_iterations> 
         <hz>60</hz>                            
+        <g>10</g>                            
     </model>
     <ground>
         <vertices>
@@ -24,7 +24,7 @@
         </vertices>
     </ground>
     <body>
-        <lin_velocity_amplitude>10</lin_velocity_amplitude>                            
+        <lin_velocity_amplitude>10</lin_velocity_amplitude>
         <lin_velocity_angle>0</lin_velocity_angle>
         <angular_velocity>-0.785398163398</angular_velocity>
         <position>

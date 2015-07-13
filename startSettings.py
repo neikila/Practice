@@ -46,6 +46,7 @@ class StartSettings():
     self.position_iterations = int(model.find('position_iterations').text)
     self.hz = float(model.find('hz').text)
     self.epsilon_lin_velocity = float(model.find('epsilon_lin_velocity').text)
+    self.g = float(model.find('g').text)
 
     ground = root.find('ground')
     self.ground_settings = GroundSettings(ground)
