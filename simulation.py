@@ -1,28 +1,36 @@
-from parserForBox2DFramework import ParserForBox2dFramework
+import sys
+from argparse import ArgumentParser
 
-parser = ParserForBox2dFramework()
+parser = ArgumentParser()
+parser.add_argument(
+        '-v', '--visualised', 
+        action='store_true', default=False, 
+        help = 'visually modelling'
+        )
+
 namespace = parser.parse_args()
+sys.argv = sys.argv[:1]
 
 if namespace.visualised:
   from framework import *
-  class Decorator(Framework):
+  class Simulation(Framework):
     name = "Throwable" # Name of the class to display
     description = "First example" 
 
-    def get_the_world_set(self):
-      super(Decorator, self).__init__()
+    def init_world(self):
+      super(Simulation, self).__init__()
 
-    def make_world_step(self, settings):
+    def step_world(self, settings):
       Framework.Step(self, settings)
 
 else:
   from Box2D import *
-  class Decorator(object):
+  class Simulation(object):
     
-    def get_the_world_set(self):
+    def init_world(self):
       self.world = b2World(gravity=(0,-10), doSleep=True)
 
-    def make_world_step(self, settings):
+    def step_world(self, settings):
       timeStep = 1.0 / settings.hz
       self.world.Step(
           timeStep, 
@@ -33,6 +41,3 @@ else:
     def run(self):
       while not self.finalized:
         self.Step(self.start_settings)
-
-
-

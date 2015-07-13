@@ -20,26 +20,39 @@ def get_qt_point_from_tuple(point, scale):
       -1 * point[1] * scale.y()
       )
 
-def draw_lines_from_points_from_xml(qp, points, scale, zero, transform):
+
+def draw_lines_from_points(qp, points, scale, zero, transform, cicle=False):
   qt_points = []
   for p in points:
     qt_points.append(transform(p, scale))
   for start, finish in zip(qt_points[:-1], qt_points[1:]): 
     qp.drawLine(zero + start, zero + finish)
+  if cicle == True:
+    qp.drawLine(zero + qt_points[0], zero + qt_points[-1])
 
 
 class Trajectory(QtGui.QWidget):
   
   def set_settings(self):
+    # Maybe it is better to redo it to total~, image~, text_height
+    # So that it would be easier to edit
     self.width = 800.0
     self.height = 800.0
     self.directory_to_save = "out/"
     
     sett = self.start_settings
     ground_set = sett.ground_settings
+    
+    qt_body_vectors = []
+    mass_center = QtGui.QVector2D(0, 0)
+    for p in sett.throwable_body:
+      qt_vector = QtGui.QVector2D(p[0], p[1])
+      qt_body_vectors.append(qt_vector)
+      mass_center += qt_vector
+    mass_center /= len(qt_body_vectors)
+    max_distance = max(qt_body_vectors, key=lambda vec: (mass_center - vec).lengthSquared()).lengthSquared()
+    model_width = ground_set.get_right()[0] - ground_set.get_left()[0] + 2 * max_distance
 
-    #TODO take into account distance till the far point of body
-    model_width = ground_set.get_right()[0] - ground_set.get_left()[0] 
     # 20 - max speed in Box2D world
     model_height = 1.2 * (sett.position[1] + float(20 ** 2) / (2 *
           sett.g) - ground_set.get_bottom()[1])
@@ -49,8 +62,12 @@ class Trajectory(QtGui.QWidget):
           (self.width - 2 * self.zero_point.x()) / model_width, 
           (self.height - 2 * self.zero_point.y()) / model_height
           )
+    if self.scale.x() > self.scale.y():
+      self.scale.setX(self.scale.y())
+    else:
+      self.scale.setY(self.scale.x())
     self.local_zero_point = QtCore.QPointF(
-        -self.scale.x() * ground_set.get_left()[0],
+        -self.scale.x() * (ground_set.get_left()[0] - max_distance),
         -self.scale.y() * ground_set.get_bottom()[1] 
         )  
     self.target = QtCore.QPointF(
@@ -100,12 +117,13 @@ class Trajectory(QtGui.QWidget):
     self.draw_ground(qp)
     self.draw_target(qp)
     self.draw_body(qp)
+    self.draw_text(qp)
 
     qp.end()
 
   def save_image(self):
     temp = datetime.now()
-    filename = temp.strftime("%y_%m_%d__%H_%M_") + "{:0>6}".format(temp.microsecond) + ".png"
+    filename = temp.strftime("%y_%m_%d__%H_%M_%S_") + "{:0>6}".format(temp.microsecond) + ".png"
     self.image.save(self.directory_to_save + filename)
 
   def draw_trajectory(self, qp):
@@ -115,36 +133,54 @@ class Trajectory(QtGui.QWidget):
 
     iterations_element = self.root.find("iterations")
     iterations = iterations_element.findall('iteration')
-    draw_lines_from_points_from_xml(qp, iterations, scale, zero, get_qt_point_from_xml_point)
+    draw_lines_from_points(qp, iterations, scale, zero, get_qt_point_from_xml_point)
         
   def draw_ground(self, qp):
     scale = self.scale
     zero = self.zero_point + self.local_zero_point
     zero.setY(self.height - zero.y())
 
-    draw_lines_from_points_from_xml(
+    draw_lines_from_points(
         qp, self.start_settings.ground_settings.points, 
         scale, zero, get_qt_point_from_tuple
         )
 
   def draw_target(self, qp):
+    scale = self.scale
+    sett = self.start_settings
     zero = self.zero_point + self.local_zero_point
     zero.setY(self.height - zero.y())
-    qp.drawEllipse(zero + self.target, 2, 2)
+
+    hole_position = get_qt_point_from_tuple(sett.hole_position, scale)
+    
+    draw_lines_from_points(
+        qp, sett.right_side_of_hole, scale, 
+        zero + hole_position, get_qt_point_from_tuple, cicle=True
+        )
+    draw_lines_from_points(
+        qp, sett.left_side_of_hole, scale, 
+        zero + hole_position, get_qt_point_from_tuple, cicle=True
+        )
+    qp.drawEllipse(zero + self.target, 2, 2)      # rx = 2, ry = 2
 
   def draw_body(self, qp):
     scale = self.scale
     zero = self.zero_point + self.local_zero_point
     zero.setY(self.height - zero.y())
     
-    body = self.root.find("body")
+    body = self.root.find("result").find("body")
     vertices = body.findall('vertice')
-    draw_lines_from_points_from_xml(qp, vertices, scale, zero, get_qt_point_from_xml_point)
-    start = get_qt_point_from_xml_point(vertices[0], scale)
-    finish = get_qt_point_from_xml_point(vertices[-1], scale)
-    qp.drawLine(zero + start, zero + finish)
+    draw_lines_from_points(qp, vertices, scale, zero, get_qt_point_from_xml_point, cicle=True)
     
+  def draw_text(self, qp):
+    rect = QtCore.QRectF(0, 10, self.width, 40)
+    text = unicode(' Simulation\n Distance: {}\n'.format(self.root.find("result").find("distance").text))
+    qp.fillRect(rect, QtGui.QColor(255, 255, 255))
+    qp.setPen(QtGui.QColor(168, 34, 3))
+    qp.setFont(QtGui.QFont('Decorative', 10))
+    qp.drawText(rect, QtCore.Qt.AlignLeft, text)        
     
+
 def main(root, settings, show_image=False):
   app = QtGui.QApplication([])
   ex = Trajectory(root, settings)
@@ -173,5 +209,4 @@ if __name__ == '__main__':
       nargs='?', default='INPUT.dat',
       help='file containig all settings')
   namespace = parser.parse_args()
-  print namespace
   main(namespace.trajectory_file, namespace.settings_file, namespace.show_image)

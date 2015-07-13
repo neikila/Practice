@@ -7,7 +7,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from startSettings import StartSettings
-from decorator import *
+from simulation import *
 import drawer
 
 
@@ -32,7 +32,7 @@ def create_shapes(points):
     shapes.append(b2EdgeShape(vertices=[p1, p2]))
   return shapes
 
-class Throwable(Decorator):
+class Throwable(Simulation):
   iteration_number = 0
 
   def save_iteration_in_xml_tree(self):
@@ -50,9 +50,13 @@ class Throwable(Decorator):
     distance = ET.SubElement(iteration, "distance")
     distance.text = str(self.distance_to_target(self.target))
 
-  def save_body_position(self):
-    body = ET.SubElement(self.result_tree, "body")
+  def save_final_state(self):
+    result = ET.SubElement(self.result_tree, "result")
 
+    distance = ET.SubElement(result, "distance")
+    distance.text = str(self.distance_to_target(self.target))
+
+    body = ET.SubElement(result, "body")
     body_vertices = self.shapes.vertices
     for vertice in body_vertices:
       temp = self.body.GetWorldPoint(vertice)
@@ -66,12 +70,11 @@ class Throwable(Decorator):
   def __init__(self, start_settings):
 
     # Initialising settings
-    # It should be the first execute
+    # It should be the first to execute
     sett = self.start_settings = start_settings
 
-    self.get_the_world_set()
+    self.init_world()
     self.world.gravity=b2Vec2(0, -1 * sett.g)
-
 
     # Ground
     self.world.CreateBody(
@@ -150,7 +153,7 @@ class Throwable(Decorator):
         sett.lin_velocity_angle += 2 * b2_pi
 
   def Step(self, settings):
-    self.make_world_step(settings)
+    self.step_world(settings)
     self.iteration_number += 1
     if self.iteration_number % 4 == 0 and self.finalized == False:
       self.save_iteration_in_xml_tree()
@@ -160,7 +163,7 @@ class Throwable(Decorator):
   def finalize(self):
     if self.finalized == False:
       self.save_iteration_in_xml_tree()
-      self.save_body_position()
+      self.save_final_state()
       tree = ET.ElementTree(self.result_tree)
       tree.write('OUTPUT.dat')
       self.finalized = True
