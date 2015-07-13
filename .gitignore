@@ -1,4 +1,5 @@
 *.swp
+*.pyc
 SDL/
 OUTPUT.dat
 pygame-1.9.1release/
