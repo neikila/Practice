@@ -11,6 +11,22 @@ from simulation import *
 import drawer
 
 
+def indent(elem, level=0):
+  i = "\n" + level*"  "
+  if len(elem):
+    if not elem.text or not elem.text.strip():
+      elem.text = i + "  "
+    if not elem.tail or not elem.tail.strip():
+      elem.tail = i
+    for elem in elem:
+      indent(elem, level+1)
+    if not elem.tail or not elem.tail.strip():
+      elem.tail = i
+  else:
+    if level and (not elem.tail or not elem.tail.strip()):
+      elem.tail = i
+
+
 # p, p0, p1 - b2Vec2; p0, p1 - segment
 def distance(p, p0, p1):
   v = p1 - p0
@@ -35,7 +51,7 @@ def create_shapes(points):
 class Throwable(Simulation):
   iteration_number = 0
 
-  def save_iteration_in_xml_tree(self):
+  def save_iteration_in_xml_tree(self, distance):
     iteration = ET.SubElement(self.iterations, "iteration")
     iteration.set("num", str(self.iteration_number))
 
@@ -47,14 +63,17 @@ class Throwable(Simulation):
     y = ET.SubElement(iteration, "y")
     y.text = str(center.y)
     
-    distance = ET.SubElement(iteration, "distance")
-    distance.text = str(self.distance_to_target(self.target))
+    distance_element = ET.SubElement(iteration, "distance")
+    distance_element.text = str(distance)
 
-  def save_final_state(self):
+  def save_final_state(self, distance):
     result = ET.SubElement(self.result_tree, "result")
 
-    distance = ET.SubElement(result, "distance")
-    distance.text = str(self.distance_to_target(self.target))
+    distance_element = ET.SubElement(result, "distance")
+    distance_element.text = str(distance)
+
+    min_distance_element = ET.SubElement(result, "min_distance")
+    min_distance_element.text = str(self.min_distance)
 
     body = ET.SubElement(result, "body")
     body_vertices = self.shapes.vertices
@@ -114,7 +133,8 @@ class Throwable(Simulation):
     # Create output xml tree
     self.result_tree = ET.Element("data")
     self.iterations = ET.SubElement(self.result_tree, "iterations")
-    self.save_iteration_in_xml_tree()
+    self.min_distance = self.distance_to_target(self.target)
+    self.save_iteration_in_xml_tree(self.min_distance)
     self.finalized = False
 
   # Reset Thowable object
@@ -155,15 +175,20 @@ class Throwable(Simulation):
   def Step(self, settings):
     self.step_world(settings)
     self.iteration_number += 1
+    distance = self.distance_to_target(self.target)
+    if self.min_distance > distance:
+      self.min_distance = distance
     if self.iteration_number % 4 == 0 and self.finalized == False:
-      self.save_iteration_in_xml_tree()
+      self.save_iteration_in_xml_tree(distance)
     self.is_finished()
 
   # Actions to do in the end
   def finalize(self):
     if self.finalized == False:
-      self.save_iteration_in_xml_tree()
-      self.save_final_state()
+      distance = self.distance_to_target(self.target)
+      self.save_iteration_in_xml_tree(distance)
+      self.save_final_state(distance)
+      indent(self.result_tree)
       tree = ET.ElementTree(self.result_tree)
       tree.write('OUTPUT.dat')
       self.finalized = True
@@ -176,7 +201,7 @@ class Throwable(Simulation):
       right = self.start_settings.ground_settings.get_right()
       bottom = self.start_settings.ground_settings.get_bottom()
      
-      if pos[0] < left[0] or pos[0] > right[0] or pos[0] < bottom[1]:
+      if pos[0] < left[0] or pos[0] > right[0] or pos[1] < bottom[1]:
         print "Object is out of field"
         self.finalize()
       

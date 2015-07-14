@@ -14,6 +14,22 @@
                 <y>0</y>
             </point>
             <point>
+                <x>-10</x>
+                <y>0</y>
+            </point>
+            <point>
+                <x>-7</x>
+                <y>15</y>
+            </point>
+            <point>
+                <x>-5</x>
+                <y>17</y>
+            </point>
+            <point>
+                <x>-1</x>
+                <y>0</y>
+            </point>
+            <point>
                 <x>40</x>
                 <y>0</y>
             </point>
@@ -24,36 +40,64 @@
         </vertices>
     </ground>
     <body>
-        <lin_velocity_amplitude>10</lin_velocity_amplitude>
-        <lin_velocity_angle>0</lin_velocity_angle>
+        <lin_velocity_amplitude>20</lin_velocity_amplitude>
+        <lin_velocity_angle>0.5</lin_velocity_angle>
         <angular_velocity>-0.785398163398</angular_velocity>
         <position>
             <point>
-                <x>0</x>
-                <y>40</y>
+                <x>-20</x>
+                <y>20</y>
             </point>
         </position>
         <angle>0</angle>
         <throwable_body>
             <point>
                 <x>0</x>
+                <y>6</y>
+            </point>
+            <point>
+                <x>3</x>
+                <y>5</y>
+            </point>
+            <point>
+                <x>6</x>
+                <y>3</y>
+            </point>
+            <point>
+                <x>6</x>
+                <y>0</y>
+            </point>
+            <point>
+                <x>0</x>
+                <y>-7</y>
+            </point>
+            <point>
+                <x>4</x>
+                <y>-5</y>
+            </point>
+            <point>
+                <x>5</x>
+                <y>-3</y>
+            </point>
+            <point>
+                <x>-2</x>
+                <y>-5</y>
+            </point>
+            <point>
+                <x>-5</x>
+                <y>-3</y>
+            </point>
+            <point>
+                <x>-6</x>
+                <y>-0</y>
+            </point>
+            <point>
+                <x>-3</x>
                 <y>5</y>
             </point>
             <point>
                 <x>-5</x>
-                <y>4</y>
-            </point>
-            <point>
-                <x>3</x>
-                <y>2</y>
-            </point>
-            <point>
-                <x>-5</x>
-                <y>2</y>
-            </point>
-            <point>
-                <x>0</x>
-                <y>0</y>
+                <y>3</y>
             </point>
         </throwable_body>
     </body>
