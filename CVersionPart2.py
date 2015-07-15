@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
+# TODO xml throwable_body -> geometry
+# TODO xml hole -> target
+# TODO CVersion -> model
+# TODO xml iterations -> trajectory
 
 import math
 
@@ -74,6 +78,14 @@ class Throwable(Simulation):
 
     min_distance_element = ET.SubElement(result, "min_distance")
     min_distance_element.text = str(self.min_distance)
+
+    mass = ET.SubElement(result, "mass")
+    mass.text = str(self.mass_data.mass)
+
+    inertia = ET.SubElement(result, "inertia")
+    inertia.text = str(self.mass_data.I)
+
+    sett = self.start_settings
 
     body = ET.SubElement(result, "body")
     body_vertices = self.shapes.vertices
