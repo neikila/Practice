@@ -2,7 +2,7 @@ The **Throw Optimization** project demonstrates modeling and optimizing a throw 
 
 **Note:** all workflows require python2.7, pybox2d (version '2.3b0') and PySide (version '1.2.1') installed.
 
-*Settings*
+**Settings**   
 Throwable body's (onward body), ground's, target's and some modell's parameters are set in xml document INPUT.dat in the relevant section <body>, <ground>, <target> and <model>
 
 All sizes should be set accordingly with SI
@@ -36,7 +36,7 @@ Modelling settings:
 3) other settings (<velocity\_iterations>, <position\_iterations>, <hz>) are settings of box2d modelling engine   
    (It's higly recommended **not** to change them).   
 
-*Simulation*
+**Simulation**   
 Modelling is performed by python script model.py which use framework pybox2d for simulation world.   
 
 Result of modelling is xml file OUTPUT.dat which contains points of trajectory in section <field> and additional information in section <result>   
@@ -52,7 +52,7 @@ Additional output is png image of throw trajectory with result distance printed 
 This image is located in directory out (relativle from the location of python script)   
 ![](./doc/img/img0.png)
 
-*Problem description*
+**Problem description**   
 In general, the design problem is to choose such start parameters of throw that provide the best values of objectives subject to constraints.   
 Objective to be minimized: start kinetic energy.   
 Hitting the target means that body stopped at the target point, so that distance should be less than 0.001 meter.   
