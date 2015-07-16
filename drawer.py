@@ -2,20 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PySide import QtGui, QtCore
+from PySide.QtGui import *
+from PySide.QtCore import *
 import xml.etree.ElementTree as ET
 from startSettings import StartSettings
 from datetime import datetime
 
 def get_qt_point_from_xml_point(point, scale):
-  return QtCore.QPointF(
+  return QPoint(
       float(point.find('x').text) * scale.x(),
       -1 * float(point.find('y').text) * scale.y()
       )
 
 
 def get_qt_point_from_tuple(point, scale):
-  return QtCore.QPointF(
+  return QPoint(
       point[0] * scale.x(),
       -1 * point[1] * scale.y()
       )
@@ -31,50 +32,72 @@ def draw_lines_from_points(qp, points, scale, zero, transform, cicle=False):
     qp.drawLine(zero + qt_points[0], zero + qt_points[-1])
 
 
-class Trajectory(QtGui.QWidget):
-  
-  def set_settings(self):
-    # Maybe it is better to redo it to total~, image~, text_height
-    # So that it would be easier to edit
-    self.width = 800.0
-    self.height = 800.0
-    self.directory_to_save = "out/"
-    
+class Trajectory(QWidget):
+
+  def get_model_size(self):
     sett = self.start_settings
     ground_set = sett.ground_settings
-    
+
     qt_body_vectors = []
-    mass_center = QtGui.QVector2D(0, 0)
+    mass_center = QVector2D(0, 0)
     for p in sett.throwable_body:
-      qt_vector = QtGui.QVector2D(p[0], p[1])
+      qt_vector = QVector2D(p[0], p[1])
       qt_body_vectors.append(qt_vector)
       mass_center += qt_vector
     mass_center /= len(qt_body_vectors)
-    max_distance = max(qt_body_vectors, key=lambda vec: (mass_center - vec).lengthSquared()).lengthSquared()
-    model_width = ground_set.get_right()[0] - ground_set.get_left()[0] + 2 * max_distance
+    self.max_distance = max(qt_body_vectors, key=lambda vec: (mass_center - vec).lengthSquared()).length()
+    model_width = ground_set.get_right()[0] - ground_set.get_left()[0] + 2 * self.max_distance
 
     # 20 - max speed in Box2D world
     model_height = 1.2 * (sett.position[1] + float(20 ** 2) / (2 *
           sett.g) - ground_set.get_bottom()[1])
+    return QVector2D(model_width, model_height)
 
-    self.zero_point = QtCore.QPointF(20, 20)
-    self.scale = QtGui.QVector2D(
-          (self.width - 2 * self.zero_point.x()) / model_width, 
-          (self.height - 2 * self.zero_point.y()) / model_height
+  
+  def init(self):
+    self.width = 800.0
+    self.height = 800.0
+    self.offset = QPoint(20, 20)
+    # Create two are: one for text and another for trajectory. 
+    self.text_area = QRect(
+        self.offset.x() + 0, self.offset.y() + 0, 
+        800, 40)
+    # Setting trajectory area depended from text area
+    self.trajectory_area = QRect(
+        self.text_area.left() + 0, self.text_area.bottom() + 10, 
+        800, 800
+        )
+    self.directory_to_save = "out/"
+    
+    model_size = self.get_model_size()
+    ground_set = self.start_settings.ground_settings
+
+    self.scale = QVector2D(
+          self.trajectory_area.width() / model_size.x(), 
+          self.trajectory_area.height() / model_size.y()
           )
     if self.scale.x() > self.scale.y():
       self.scale.setX(self.scale.y())
+      self.trajectory_area.setWidth(model_size.x() * self.scale.x())
     else:
       self.scale.setY(self.scale.x())
-    self.local_zero_point = QtCore.QPointF(
-        -self.scale.x() * (ground_set.get_left()[0] - max_distance),
+      self.trajectory_area.setHeight(model_size.y() * self.scale.y())
+
+    self.local_zero_point = QPoint(
+        -self.scale.x() * (ground_set.get_left()[0] - self.max_distance),
         -self.scale.y() * ground_set.get_bottom()[1] 
         )  
-    self.target = QtCore.QPointF(
+    self.target = QPoint(
         self.scale.x() * (self.start_settings.hole_target[0] + 
           self.start_settings.hole_position[0]),
         -self.scale.y() * (self.start_settings.hole_target[1] + 
           self.start_settings.hole_position[1])
+        )
+
+    # Getting resulting size of image
+    self.total_area = QVector2D(
+        max(self.text_area.right(), self.trajectory_area.right()) + self.offset.x(), 
+        self.trajectory_area.bottom() + self.offset.y()
         )
 
 
@@ -90,16 +113,16 @@ class Trajectory(QtGui.QWidget):
       self.start_settings = settings
 
     self.root = root
-    self.set_settings()
+    self.init()
     self.init_ui()
     
   def init_ui(self):    
-    self.setGeometry(200, 200, self.width, self.height)
+    self.setGeometry(50, 50, self.total_area.x(), self.total_area.y())
     self.setWindowTitle('Result')
     self.show()
 
   def paintEvent(self, event):
-    qp = QtGui.QPainter()
+    qp = QPainter()
     qp.begin(self)
 
     self.draw_image()
@@ -108,9 +131,9 @@ class Trajectory(QtGui.QWidget):
     qp.end()
 
   def draw_image(self):
-    self.image = QtGui.QImage(self.width, self.height, QtGui.QImage.Format_ARGB32)
-    self.image.fill(QtGui.qRgb(255, 255, 255))
-    qp = QtGui.QPainter()
+    self.image = QImage(self.total_area.x(), self.total_area.y(), QImage.Format_ARGB32)
+    self.image.fill(qRgb(255, 255, 255))
+    qp = QPainter()
     qp.begin(self.image)
     
     self.draw_trajectory(qp)
@@ -126,10 +149,15 @@ class Trajectory(QtGui.QWidget):
     filename = temp.strftime("%y_%m_%d__%H_%M_%S_") + "{:0>6}".format(temp.microsecond) + ".png"
     self.image.save(self.directory_to_save + filename)
 
+  def get_trajectory_zero_point(self):
+    return QPoint(
+      self.trajectory_area.left() + self.local_zero_point.x(),
+      self.trajectory_area.bottom() - self.local_zero_point.y()
+      )
+
   def draw_trajectory(self, qp):
     scale = self.scale
-    zero = self.zero_point + self.local_zero_point
-    zero.setY(self.height - zero.y())
+    zero = self.get_trajectory_zero_point()
 
     iterations_element = self.root.find("iterations")
     iterations = iterations_element.findall('iteration')
@@ -137,8 +165,7 @@ class Trajectory(QtGui.QWidget):
         
   def draw_ground(self, qp):
     scale = self.scale
-    zero = self.zero_point + self.local_zero_point
-    zero.setY(self.height - zero.y())
+    zero = self.get_trajectory_zero_point()
 
     draw_lines_from_points(
         qp, self.start_settings.ground_settings.points, 
@@ -148,8 +175,7 @@ class Trajectory(QtGui.QWidget):
   def draw_target(self, qp):
     scale = self.scale
     sett = self.start_settings
-    zero = self.zero_point + self.local_zero_point
-    zero.setY(self.height - zero.y())
+    zero = self.get_trajectory_zero_point()
 
     hole_position = get_qt_point_from_tuple(sett.hole_position, scale)
     
@@ -165,24 +191,23 @@ class Trajectory(QtGui.QWidget):
 
   def draw_body(self, qp):
     scale = self.scale
-    zero = self.zero_point + self.local_zero_point
-    zero.setY(self.height - zero.y())
+    zero = self.get_trajectory_zero_point()
     
     body = self.root.find("result").find("body")
     vertices = body.findall('vertice')
     draw_lines_from_points(qp, vertices, scale, zero, get_qt_point_from_xml_point, cicle=True)
     
   def draw_text(self, qp):
-    rect = QtCore.QRectF(0, 10, self.width, 40)
-    text = unicode(' Simulation\n Distance: {}\n'.format(self.root.find("result").find("distance").text))
-    qp.fillRect(rect, QtGui.QColor(255, 255, 255))
-    qp.setPen(QtGui.QColor(168, 34, 3))
-    qp.setFont(QtGui.QFont('Decorative', 10))
-    qp.drawText(rect, QtCore.Qt.AlignLeft, text)        
+    rect = QRectF(self.text_area)
+    text = unicode(' Simulation\n Distance: {}'.format(self.root.find("result").find("distance").text))
+    qp.fillRect(rect, QColor(255, 255, 255))
+    qp.setPen(QColor(168, 34, 3))
+    qp.setFont(QFont('Decorative', 10))
+    qp.drawText(rect, Qt.AlignLeft, text)        
     
 
 def main(root, settings, show_image=False):
-  app = QtGui.QApplication([])
+  app = QApplication([])
   ex = Trajectory(root, settings)
   ex.draw_image()
   result = ex.save_image()

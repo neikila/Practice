@@ -8,48 +8,56 @@ The **Throw Optimization** project demonstrates modeling and optimizing a throw 
 
 Throwable body's (onward body), ground's, target's and some modell's parameters are set in xml document INPUT.dat in the relevant section <body>, <ground>, <target> and <model>
 
-Body geometry is polygon which is described by local vertices (more than 3) in the section (<geometry>)
-Body start velocity amplitude is set by field <lin_velocity_amplitude>
-Body start velocity angle is set by field <lin_velocity_angle>
-Body start angular velocity is set by field <angular_velocity>
-Body start global position is decribed in section <position>
+All sizes should be set accordingly with SI
 
-Ground is a number of connected edges
-Edge ends' coordinates are set in section <vertices>
-Two nearby vertices describe one edge
-Vertices are global
+Body geometry is polygon which is described by local vertices (more than 3) in the section <geometry>   
+Body start velocity amplitude is set by field <lin\_velocity\_amplitude>   
+Body start velocity angle is set by field <lin\_velocity\_angle>   
+Body start angular velocity is set by field <angular\_velocity>   
+Body start global position is decribed in section <position>   
 
-Target object global position is set by field <position>
-Point distance to which will be calculated in pSevev is set in section <target>
-Target geometry is set by to section: <left_side_of_target> and <right_side_of_target>
-Both are described by a number of local vertices (more than 3)
+Ground is a number of connected edges   
+Edge ends' coordinates are set in section <vertices>   
+Two nearby vertices describe one edge   
+Vertices are global   
 
-Modelling settings:
-There are two conditions (sign) to stop modelling:
-First is Body is stopped and second is Body's center of mass is out of modelling field
-Body is consider to be stopped when it's linear velocity is below <epsilon_lin_velocity>
-Modelling field is all space between leftmost point and rightmost point and above the
-bottom of ground
-Also it possible to change gravity constant be setting field <g>
+Target object global position is set by field <position>   
+Point distance to which will be calculated in pSevev is set in section <target>   
+Target geometry is set by to section: <left\_side\_of\_target> and <right\_side\_of\_target>   
+Both are described by a number of local vertices (more than 3)   
 
-Other settings (<velocity_iterations>, <position_iterations>, <hz>) are settings of box2d modelling engine.
-It's higly recommended **not** to change them
+Modelling settings:   
+There are two conditions (sign) to stop modelling:   
+First is Body is stopped and second is Body's center of mass is out of modelling field   
+Body is consider to be stopped when it's linear velocity is below <epsilon\_lin\_velocity>   
+Modelling field is all space between leftmost point and rightmost point and above the bottom of ground   
+Also it possible to change gravity constant be setting field <g>   
+
+Other settings (<velocity\_iterations>, <position\_iterations>, <hz>) are settings of box2d modelling engine.   
+It's higly recommended **not** to change them   
 
 Modelling is performed by python script model.py
 
-Result of modelling is xml file OUTPUT.dat which contains points of trajectory in
-section <field> and additional information in section <result>
-Additional information, which is mentioned there are:
-final distance between target and body at the last step - <distance>.
-Distance between body and target is distance between target point and the closet body point
-Minimal distance between body and target which was achivied while body was moving -
-<min_distance>.
-Body mass - <mass>.
-Body inertia - <inertia>.
-Body state which is describe by all vertices of body - <body>
+Result of modelling is xml file OUTPUT.dat which contains points of trajectory in section <field> and additional information in section <result>   
+Additional information, which is mentioned there is: 
+final distance between target and body at the last step - <distance>.   
+Distance between body and target is distance between target point and the closet body point.   
+Minimal distance between body and target which was achivied while body was moving - <min\_distance>.   
+Body mass - <mass>.   
+Body inertia - <inertia>.   
+Body state which is describe by all vertices of body - <body>.   
 
-Additional output is png image of throw trajectory with result distance printed in it.
-This image is located in directory out (relativle from the location of python script)
+Additional output is png image of throw trajectory with result distance printed in it.   
+This image is located in directory out (relativle from the location of python script)   
+![](./doc/img/img0.png)
+
+In general, the design problem is to choose such start parameters of throw that provide the best values of objectives subject to constraints.   
+Objective to be minimized: start kinetic energy.   
+Hitting the target means that body stopped at the target point, so that distance should be less than 0.001 meter.   
+Only threee parameters among all mentioned above could be varied during optimization: <lin\_velocity\_amplitude>, <lin\_velocity\_angle>, <angular\_velocity>.   
+
+Example contains three workflows:   
+The [](./RotatingDisk.p7wf) workflow u
 <!--TODO Finished here-->
 
 Disk geometry is described by 6 radii (_r1_ to _r6_) and 3 thickness (_t1_, _t3_, _t5_) parameters.
@@ -58,7 +66,6 @@ The parameters _r5_, _r6_, and _t5_ define the contact zone of rim and blades an
 Other parameters are design variables.
 Considered performance characteristics are the disk mass, maximum radial displacement and maximum stress.
 
-![](./doc/img/disk.png)
 
 Additional parameters are: total mass of blades and disk rotation rate (required to calculate the inertial load), and disk material properties.
 
@@ -68,7 +75,7 @@ In order to prevent the contact between rotating and static components, the radi
 To meet the strength requirements, equivalent maximum stress cannot exceed 600 MPa.
 Additional parameters and 3 fixed geometry values mentioned above are not varied during optimization, but can be modified before solving (these parameters are added to workflow configuration).
 
-The example considers two different computational models.
+
 The first model is a system of ordinary differential equations defining the stress-strain behavior of the disk.
 The [RotatingDisk](./RotatingDisk.p7wf) workflow uses an external solver included into the project to solve this system of differential equations by Runge-Kutta method.
 The second model, implemented in the [RotatingDiskFEModel](./RotatingDiskFEModel.p7wf) workflow, utilizes a finite-element method to solve the same stress-strain problem.
