@@ -50,7 +50,7 @@
             </point>
         </position>
         <angle>0</angle>
-        <throwable_body>
+        <geometry>
             <point>
                 <x>0</x>
                 <y>6</y>
@@ -99,22 +99,22 @@
                 <x>-5</x>
                 <y>3</y>
             </point>
-        </throwable_body>
+        </geometry>
     </body>
-    <hole>
-        <hole_position>
+    <target>
+        <target_position>
             <point>
                 <x>30</x>
                 <y>0</y>
             </point>
-        </hole_position>
-        <hole_target>
+        </target_position>
+        <target_point>
             <point>
                 <x>0</x>
                 <y>2</y>
             </point>
-        </hole_target>
-        <left_side_of_hole>
+        </target_point>
+        <left_side_of_target>
             <point>
                 <x>-5</x>
                 <y>5</y>
@@ -131,8 +131,8 @@
                 <x>-5</x>
                 <y>0</y>
             </point>
-        </left_side_of_hole>
-        <right_side_of_hole>
+        </left_side_of_target>
+        <right_side_of_target>
             <point>
                 <x>5</x>
                 <y>5</y>
@@ -149,6 +149,6 @@
                 <x>5</x>
                 <y>0</y>
             </point>
-        </right_side_of_hole>
-    </hole>
+        </right_side_of_target>
+    </target>
 </data>

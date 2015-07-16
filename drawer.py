@@ -40,7 +40,7 @@ class Trajectory(QWidget):
 
     qt_body_vectors = []
     mass_center = QVector2D(0, 0)
-    for p in sett.throwable_body:
+    for p in sett.geometry:
       qt_vector = QVector2D(p[0], p[1])
       qt_body_vectors.append(qt_vector)
       mass_center += qt_vector
@@ -88,10 +88,10 @@ class Trajectory(QWidget):
         -self.scale.y() * ground_set.get_bottom()[1] 
         )  
     self.target = QPoint(
-        self.scale.x() * (self.start_settings.hole_target[0] + 
-          self.start_settings.hole_position[0]),
-        -self.scale.y() * (self.start_settings.hole_target[1] + 
-          self.start_settings.hole_position[1])
+        self.scale.x() * (self.start_settings.target_point[0] + 
+          self.start_settings.target_position[0]),
+        -self.scale.y() * (self.start_settings.target_point[1] + 
+          self.start_settings.target_position[1])
         )
 
     # Getting resulting size of image
@@ -159,8 +159,8 @@ class Trajectory(QWidget):
     scale = self.scale
     zero = self.get_trajectory_zero_point()
 
-    iterations_element = self.root.find("iterations")
-    iterations = iterations_element.findall('iteration')
+    trajectory = self.root.find("trajectory")
+    iterations = trajectory.findall('iteration')
     draw_lines_from_points(qp, iterations, scale, zero, get_qt_point_from_xml_point)
         
   def draw_ground(self, qp):
@@ -177,15 +177,15 @@ class Trajectory(QWidget):
     sett = self.start_settings
     zero = self.get_trajectory_zero_point()
 
-    hole_position = get_qt_point_from_tuple(sett.hole_position, scale)
+    target_position = get_qt_point_from_tuple(sett.target_position, scale)
     
     draw_lines_from_points(
-        qp, sett.right_side_of_hole, scale, 
-        zero + hole_position, get_qt_point_from_tuple, cicle=True
+        qp, sett.right_side_of_target, scale, 
+        zero + target_position, get_qt_point_from_tuple, cicle=True
         )
     draw_lines_from_points(
-        qp, sett.left_side_of_hole, scale, 
-        zero + hole_position, get_qt_point_from_tuple, cicle=True
+        qp, sett.left_side_of_target, scale, 
+        zero + target_position, get_qt_point_from_tuple, cicle=True
         )
     qp.drawEllipse(zero + self.target, 2, 2)      # rx = 2, ry = 2
 

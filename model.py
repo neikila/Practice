@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# TODO xml throwable_body -> geometry
-# TODO xml hole -> target
-# TODO CVersion -> model
-# TODO xml iterations -> trajectory
 
 import math
 
@@ -56,7 +51,7 @@ class Throwable(Simulation):
   iteration_number = 0
 
   def save_iteration_in_xml_tree(self, distance):
-    iteration = ET.SubElement(self.iterations, "iteration")
+    iteration = ET.SubElement(self.trajectory, "iteration")
     iteration.set("num", str(self.iteration_number))
 
     self.body.GetMassData(self.mass_data)
@@ -113,18 +108,18 @@ class Throwable(Simulation):
         )
 
     # Hole
-    hole = self.world.CreateStaticBody(
-          position=sett.hole_position,
+    target = self.world.CreateStaticBody(
+          position=sett.target_position,
           shapes=[
-              b2PolygonShape(vertices=sett.left_side_of_hole),
-              b2PolygonShape(vertices=sett.right_side_of_hole),
+              b2PolygonShape(vertices=sett.left_side_of_target),
+              b2PolygonShape(vertices=sett.right_side_of_target),
             ]
         )
-    self.target = hole.GetWorldPoint(sett.hole_target)
+    self.target = target.GetWorldPoint(sett.target_point)
 
     # Body
     self.shapes = (
-        b2PolygonShape(vertices=sett.throwable_body)
+        b2PolygonShape(vertices=sett.geometry)
              )
     self.body=self.world.CreateDynamicBody(
           position=sett.position, 
@@ -144,7 +139,7 @@ class Throwable(Simulation):
 
     # Create output xml tree
     self.result_tree = ET.Element("data")
-    self.iterations = ET.SubElement(self.result_tree, "iterations")
+    self.trajectory = ET.SubElement(self.result_tree, "trajectory")
     self.min_distance = self.distance_to_target(self.target)
     self.save_iteration_in_xml_tree(self.min_distance)
     self.finalized = False
