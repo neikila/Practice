@@ -48,7 +48,7 @@ class Trajectory(QWidget):
     self.max_distance = max(qt_body_vectors, key=lambda vec: (mass_center - vec).lengthSquared()).length()
     model_width = ground_set.get_right()[0] - ground_set.get_left()[0] + 2 * self.max_distance
 
-    # 20 - max speed in Box2D world
+    # 20 - max recomended speed in Box2D world
     model_height = 1.2 * (sett.position[1] + float(20 ** 2) / (2 *
           sett.g) - ground_set.get_bottom()[1])
     return QVector2D(model_width, model_height)
@@ -83,16 +83,11 @@ class Trajectory(QWidget):
       self.scale.setY(self.scale.x())
       self.trajectory_area.setHeight(model_size.y() * self.scale.y())
 
+    # Convert Coordinates of b2World point (0,0) to image coordinates
     self.local_zero_point = QPoint(
-        -self.scale.x() * (ground_set.get_left()[0] - self.max_distance),
-        -self.scale.y() * ground_set.get_bottom()[1] 
+        self.trajectory_area.left() - self.scale.x() * (ground_set.get_left()[0] - self.max_distance),
+        self.trajectory_area.bottom() + self.scale.y() * ground_set.get_bottom()[1] 
         )  
-    self.target = QPoint(
-        self.scale.x() * (self.start_settings.target_point[0] + 
-          self.start_settings.target_position[0]),
-        -self.scale.y() * (self.start_settings.target_point[1] + 
-          self.start_settings.target_position[1])
-        )
 
     # Getting resulting size of image
     self.total_area = QVector2D(
@@ -100,13 +95,18 @@ class Trajectory(QWidget):
         self.trajectory_area.bottom() + self.offset.y()
         )
 
+    self.setGeometry(50, 50, self.total_area.x(), self.total_area.y())
+    self.setWindowTitle('Result')
+    self.show()
 
   def __init__(self, root, settings):
     super(Trajectory, self).__init__()
+    # If root is the name of ouput file it will be parsed
     if type(root) == str:
       tree = ET.parse(root)
       root = tree.getroot()
 
+    # If settings is the name of input file it will be parsed
     if type(settings) == str:
       self.start_settings = StartSettings(settings)
     else:
@@ -114,12 +114,6 @@ class Trajectory(QWidget):
 
     self.root = root
     self.init()
-    self.init_ui()
-    
-  def init_ui(self):    
-    self.setGeometry(50, 50, self.total_area.x(), self.total_area.y())
-    self.setWindowTitle('Result')
-    self.show()
 
   def paintEvent(self, event):
     qp = QPainter()
@@ -149,15 +143,9 @@ class Trajectory(QWidget):
     filename = temp.strftime("%y_%m_%d__%H_%M_%S_") + "{:0>6}".format(temp.microsecond) + ".png"
     self.image.save(self.directory_to_save + filename)
 
-  def get_trajectory_zero_point(self):
-    return QPoint(
-      self.trajectory_area.left() + self.local_zero_point.x(),
-      self.trajectory_area.bottom() - self.local_zero_point.y()
-      )
-
   def draw_trajectory(self, qp):
     scale = self.scale
-    zero = self.get_trajectory_zero_point()
+    zero = self.local_zero_point
 
     trajectory = self.root.find("trajectory")
     iterations = trajectory.findall('iteration')
@@ -165,7 +153,7 @@ class Trajectory(QWidget):
         
   def draw_ground(self, qp):
     scale = self.scale
-    zero = self.get_trajectory_zero_point()
+    zero = self.local_zero_point
 
     draw_lines_from_points(
         qp, self.start_settings.ground_settings.points, 
@@ -175,7 +163,7 @@ class Trajectory(QWidget):
   def draw_target(self, qp):
     scale = self.scale
     sett = self.start_settings
-    zero = self.get_trajectory_zero_point()
+    zero = self.local_zero_point
 
     target_position = get_qt_point_from_tuple(sett.target_position, scale)
     
@@ -187,11 +175,18 @@ class Trajectory(QWidget):
         qp, sett.left_side_of_target, scale, 
         zero + target_position, get_qt_point_from_tuple, cicle=True
         )
-    qp.drawEllipse(zero + self.target, 2, 2)      # rx = 2, ry = 2
+
+    target = QPoint(
+        self.scale.x() * (self.start_settings.target_point[0] + 
+          self.start_settings.target_position[0]),
+        -self.scale.y() * (self.start_settings.target_point[1] + 
+          self.start_settings.target_position[1])
+        )
+    qp.drawEllipse(zero + target, 2, 2)      # rx = 2, ry = 2
 
   def draw_body(self, qp):
     scale = self.scale
-    zero = self.get_trajectory_zero_point()
+    zero = self.local_zero_point
     
     body = self.root.find("result").find("body")
     vertices = body.findall('vertice')
@@ -217,6 +212,8 @@ def main(root, settings, show_image=False):
 
 
 if __name__ == '__main__':
+  # It is possible to run this script apart from model.py 
+  # Then it will parse OUTPUT.dat (or whatever you set in command line arguments)
   from argparse import ArgumentParser
   parser = ArgumentParser()
   parser.add_argument(

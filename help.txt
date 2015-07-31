@@ -1,3 +1,14 @@
+>>> import PySide
+>>> PySide.__version__
+'1.2.1'
+>>> import pygame
+>>> pygame.__version__
+'1.9.1release'
+>>> import Box2D
+>>> Box2D.__version__
+'2.3b0'
+
+
 comparison.py - script to compare perfomance of pypybox2d and pybox2d
 
 
@@ -28,3 +39,7 @@ pygame_framework.py
 
 Here you can find code of Box2d test examples
 pygame
+
+Written by Neyman Kirill, trainee 
+July 2015
+If there would be any question about code, please write me (neikila@gmail.com) and I'll try to help you. 

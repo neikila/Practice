@@ -9,7 +9,7 @@ from startSettings import StartSettings
 from simulation import *
 import painter
 
-
+# pretty_print of xml tree
 def indent(elem, level=0):
   i = "\n" + level*"  "
   if len(elem):
