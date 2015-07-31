@@ -7,7 +7,7 @@ if [ $# -eq 0 ] ; then
 fi
 echo version = $version
 cp model.py standAlone/.
-cp drawer.py standAlone/.
+cp painter.py standAlone/.
 cp input_configs/INPUTv${version}.dat standAlone/INPUT.dat
 cp OUTPUT.dat standAlone/.
 cp simulation.py standAlone/.
