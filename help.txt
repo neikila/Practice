@@ -1,0 +1,30 @@
+comparison.py - script to compare perfomance of pypybox2d and pybox2d
+
+
+painter.py - module of painting png file
+input_configs - directody with INPUT cinfiguration files (because I have tired to change it manually every time)
+model.py - script to simulate world
+out - directory where png files are saved in runtime
+INPUT.dat - input configuration file
+OUTPUT.dat - output dile with trajectory information and some additional data
+README.md - pSeven documentation draft (sorry for the lack of experience in writting documetation)
+simulation.py - a special class for which provide possibilty to simulate with dynamic
+visualization with no changes in main code (model.py)
+startSettings.py - module to parse and pepresent INPUT configuration file during
+runtime
+
+
+copy.sh - script to cope files from directory of code developing to pSeven project directory
+prepare.sh - script which make a directory with the inly files required for pSeven
+shell_script.sh - script to start model.py with current INPUT configuration file which
+is taken from input_configs
+
+
+Additional files which are required for running module.py with dynamic vizualization
+by the box2d engine (it is usefull for debugging)
+settings.py
+framework.py
+pygame_framework.py
+
+Here you can find code of Box2d test examples
+pygame

@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 from startSettings import StartSettings
 from simulation import *
-import drawer
+import painter
 
 
 def indent(elem, level=0):
@@ -41,7 +41,7 @@ def distance(p, p0, p1):
   return (p - h).lengthSquared
 
 
-def create_shapes(points):
+def shapes_from_points(points):
   shapes = []
   for p1, p2 in zip(points[:-1:1], points[1::1]):
     shapes.append(b2EdgeShape(vertices=[p1, p2]))
@@ -104,7 +104,7 @@ class Throwable(Simulation):
 
     # Ground
     self.world.CreateBody(
-          shapes=create_shapes(sett.ground_settings.points)
+          shapes=shapes_from_points(sett.ground_settings.points)
         )
 
     # Hole
@@ -233,4 +233,4 @@ if __name__=="__main__":
   world = Throwable(start_settings)
   world.run()
   world.finalize()
-  drawer.main(world.result_tree, world.start_settings)
+  painter.main(world.result_tree, world.start_settings)
